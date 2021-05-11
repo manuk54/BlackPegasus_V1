@@ -1,21 +1,22 @@
-package sample;
+package classes;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
+    public static String nickname;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello Darkness!");
-        Scene scene = new Scene(root, 1200, 600);
+        primaryStage.setTitle("Tales of the Black Pegasus");
 
-        primaryStage.setScene(scene);
+        Parent introParent = FXMLLoader.load(getClass().getResource("/fxml/introFXML.fxml"));
+        Scene introScene = new Scene(introParent, 800, 400);
+        primaryStage.setScene(introScene);
+
+
         primaryStage.show();
     }
 
