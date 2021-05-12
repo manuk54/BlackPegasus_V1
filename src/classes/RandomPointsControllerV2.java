@@ -14,7 +14,7 @@ import javafx.util.Duration;
 public class RandomPointsControllerV2 {
     private boolean firstClick = true;
     private boolean targetShot = false;
-    //private boolean targetMissed = false;
+    private boolean targetMissed = false;
     private long targetStartTime = Long.MAX_VALUE;
     private static final int targetRadius = 20;
     private double targetLiveTime = 2500; //in ms
@@ -47,11 +47,11 @@ public class RandomPointsControllerV2 {
                 targetLiveTime *=0.95;
             System.out.println(targetLiveTime);
         }
-        if(isTargetMissed()){
+        if(targetMissed){
             circle = createAnimatedTarget();
             pane.getChildren().add(circle);
             targetStartTime = System.currentTimeMillis();
-//            targetMissed = false;
+            targetMissed = false;
             if(targetLiveTime < 2500)
                 targetLiveTime *=1.05;
             System.out.println("MISSED");
@@ -63,11 +63,6 @@ public class RandomPointsControllerV2 {
     // TODO always check this method
     @FXML
     public void handleTargetLiveTime(MouseEvent mouseEvent){
-        isTargetMissed();
-    }
-
-    private boolean isTargetMissed(){
-        boolean targetMissed = false;
         if(System.currentTimeMillis() - targetStartTime >= targetLiveTime){
             clearPane();
             score--;
@@ -76,7 +71,6 @@ public class RandomPointsControllerV2 {
             if(targetLiveTime < 2500)
                 targetLiveTime *=1.05;
             System.out.println(targetLiveTime);
-            return true;
         }
         if(targetMissed){
             Circle circle = createAnimatedTarget();
@@ -84,7 +78,11 @@ public class RandomPointsControllerV2 {
             targetStartTime = System.currentTimeMillis();
             targetMissed = false;
         }
-        return false;
+    }
+
+    private boolean isTargetMissed(){
+        boolean targetMissed = false;
+        return  targetMissed;
     }
 
 
@@ -102,7 +100,7 @@ public class RandomPointsControllerV2 {
     public Circle createCircleAtRandomPosition(int radius){
         Circle circle = new Circle(radius);
         circle.setCenterX(Math.random()*pane.getWidth()+radius);
-        circle.setCenterY(Math.random()*pane.getHeight()+radius+scoreLabel.getHeight()); // hBox.getHeight() = 100
+        circle.setCenterY(Math.random()*pane.getHeight()+radius*1.5+scoreLabel.getHeight()); // hBox.getHeight() = 100
 //        System.out.println("x: " + circle.getCenterX()+" y: " + circle.getCenterY());
         circle.setFill(Color.RED);
         circle.setOnMouseClicked(mouseEvent1 -> {
