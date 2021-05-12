@@ -19,6 +19,7 @@ public class IntroController {
     @FXML
     Button enterButton;
 
+    @FXML
     public void handleButton(ActionEvent actionEvent){
 //        if(hasOnlyLetters()) Main.nickname = playersName.getText().toString();
 //        else Main.nickname = "Landlubber";
@@ -26,7 +27,7 @@ public class IntroController {
             adviceForNickname.setText("!Please use only letters!");
         }else{
         Main.nickname = playersName.getText().toString();
-        System.out.println("Nick "+","+Main.nickname);}
+        System.out.println("Nickname: "+Main.nickname);}
     }
 
     public void handleTextFieldEnter(ActionEvent actionEvent){
