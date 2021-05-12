@@ -14,6 +14,8 @@ import javafx.util.Duration;
 public class RandomPointsControllerV2 {
     private boolean firstClick = true;
     private boolean targetShot = false;
+    //private boolean targetMissed = false;
+    private long targetStartTime = Long.MAX_VALUE;
     private static final int targetRadius = 20;
     private double targetLiveTime = 2500; //in ms
     private int score = 0;
@@ -31,15 +33,58 @@ public class RandomPointsControllerV2 {
         Circle circle = createAnimatedTarget();
         if(firstClick){
             pane.getChildren().add(circle);
+            targetStartTime = System.currentTimeMillis();
             firstClick=false;
         }
         if(targetShot) {
-            scoreLabel.setText("Your score: " + score);
-            circle.setFill(pane.getScene().getFill());
+            updateScore();
+//            circle.setFill(pane.getScene().getFill());
             circle = createAnimatedTarget();
             pane.getChildren().add(circle);
+            targetStartTime = System.currentTimeMillis();
             targetShot = false;
+            if(targetLiveTime >= 1000)
+                targetLiveTime *=0.95;
+            System.out.println(targetLiveTime);
         }
+        if(isTargetMissed()){
+            circle = createAnimatedTarget();
+            pane.getChildren().add(circle);
+            targetStartTime = System.currentTimeMillis();
+//            targetMissed = false;
+            if(targetLiveTime < 2500)
+                targetLiveTime *=1.05;
+            System.out.println("MISSED");
+        }
+    }
+
+    // clears Pane if Target lives more then targetLiveTime
+    // when mouse moved
+    // TODO always check this method
+    @FXML
+    public void handleTargetLiveTime(MouseEvent mouseEvent){
+        isTargetMissed();
+    }
+
+    private boolean isTargetMissed(){
+        boolean targetMissed = false;
+        if(System.currentTimeMillis() - targetStartTime >= targetLiveTime){
+            clearPane();
+            score--;
+            updateScore();
+            targetMissed = true;
+            if(targetLiveTime < 2500)
+                targetLiveTime *=1.05;
+            System.out.println(targetLiveTime);
+            return true;
+        }
+        if(targetMissed){
+            Circle circle = createAnimatedTarget();
+            pane.getChildren().add(circle);
+            targetStartTime = System.currentTimeMillis();
+            targetMissed = false;
+        }
+        return false;
     }
 
 
@@ -50,15 +95,19 @@ public class RandomPointsControllerV2 {
         //pane.getChildren().add(scoreLabel);
     }
 
+    private void updateScore(){
+        scoreLabel.setText("Your score: " + score);
+    }
+
     public Circle createCircleAtRandomPosition(int radius){
         Circle circle = new Circle(radius);
-        circle.setCenterX(Math.random()*Main.getWindowWidth()+radius);
-        circle.setCenterY(Math.random()*(Main.getWindowHeight()-100)+radius); // hBox.getHeight() = 100
-        System.out.println("x: " + circle.getCenterX()+" y: " + circle.getCenterY());
+        circle.setCenterX(Math.random()*pane.getWidth()+radius);
+        circle.setCenterY(Math.random()*pane.getHeight()+radius+scoreLabel.getHeight()); // hBox.getHeight() = 100
+//        System.out.println("x: " + circle.getCenterX()+" y: " + circle.getCenterY());
         circle.setFill(Color.RED);
         circle.setOnMouseClicked(mouseEvent1 -> {
 //            circle.setFill(pane.getScene().getFill());
-            circle.setFill(Color.WHITESMOKE);
+            circle.setFill(Color.YELLOW);
             score++;
             targetShot = true;
             clearPane();
