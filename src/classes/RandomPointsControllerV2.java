@@ -80,12 +80,6 @@ public class RandomPointsControllerV2 {
         }
     }
 
-    private boolean isTargetMissed(){
-        boolean targetMissed = false;
-        return  targetMissed;
-    }
-
-
     private void clearPane(){
         Rectangle rec = new Rectangle(0,scoreLabel.getHeight(),pane.getWidth(),pane.getHeight());
         rec.setFill(Color.WHITESMOKE);
