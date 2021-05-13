@@ -2,43 +2,61 @@ package classes;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.awt.*;
 
 public class IntroController {
-   // public String nickname ="";
+    private String nickname;
+    private Scene nextScene;
+
     @FXML
-    Label introTextLabel;
+    private Label introTextLabel;
     @FXML
-    TextField playersName;
+    private TextField playersName;
     @FXML
-    Label adviceForNickname;
+    private Label adviceForNickname;
     @FXML
-    Button enterButton;
+    private Button enterButton;
 
     @FXML
     public void handleButton(ActionEvent actionEvent){
-//        if(hasOnlyLetters()) Main.nickname = playersName.getText().toString();
-//        else Main.nickname = "Landlubber";
-        if (!hasOnlyLetters()){
+        if (!nicknameHasOnlyLetters()){
             adviceForNickname.setText("!Please use only letters!");
-        }else{
-        Main.nickname = playersName.getText().toString();
-        System.out.println("Nickname: "+Main.nickname);}
+        }else if(playersName.getText().toString().length()>0){
+        nickname = playersName.getText().toString();
+        System.out.println("Nickname: "+nickname);
+        openNextScene(actionEvent);
+            System.out.println("done");
+        }
     }
 
     public void handleTextFieldEnter(ActionEvent actionEvent){
 
     }
 
-    private boolean hasOnlyLetters(){
+    private void openNextScene(ActionEvent actionEvent){
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(nextScene);
+    }
+
+    private boolean nicknameHasOnlyLetters(){
         for(int i = 0; i < playersName.getText().toString().length();i++){
             char ch = playersName.getText().toString().charAt(i);
             if(!((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))) return false;
         }
         return true;
+    }
+    public void setNextScene(Scene scene){
+        nextScene = scene;
+    }
+
+    public String getNickname() {
+        return nickname;
     }
 }

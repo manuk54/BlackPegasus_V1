@@ -11,6 +11,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.Random;
+
 public class RandomPointsControllerV2 {
     private boolean firstClick = true;
     private boolean targetShot = false;
@@ -38,7 +40,6 @@ public class RandomPointsControllerV2 {
         }
         if(targetShot) {
             updateScore();
-//            circle.setFill(pane.getScene().getFill());
             circle = createAnimatedTarget();
             pane.getChildren().add(circle);
             targetStartTime = System.currentTimeMillis();
@@ -84,7 +85,6 @@ public class RandomPointsControllerV2 {
         Rectangle rec = new Rectangle(0,scoreLabel.getHeight(),pane.getWidth(),pane.getHeight());
         rec.setFill(Color.WHITESMOKE);
         pane.getChildren().add(rec);
-        //pane.getChildren().add(scoreLabel);
     }
 
     private void updateScore(){
@@ -93,12 +93,11 @@ public class RandomPointsControllerV2 {
 
     public Circle createCircleAtRandomPosition(int radius){
         Circle circle = new Circle(radius);
-        circle.setCenterX(Math.random()*pane.getWidth()+radius);
-        circle.setCenterY(Math.random()*pane.getHeight()+radius*1.5+scoreLabel.getHeight()); // hBox.getHeight() = 100
-//        System.out.println("x: " + circle.getCenterX()+" y: " + circle.getCenterY());
+        Random rdm = new Random();
+        circle.setCenterX(Math.random()*(pane.getWidth()-radius*3)+radius*1.5);
+        circle.setCenterY(Math.random()*(pane.getHeight()-radius*1.5-(scoreLabel.getHeight()+radius*1.5))+scoreLabel.getHeight()+radius*1.5); // hBox.getHeight() = 100
         circle.setFill(Color.RED);
         circle.setOnMouseClicked(mouseEvent1 -> {
-//            circle.setFill(pane.getScene().getFill());
             circle.setFill(Color.YELLOW);
             score++;
             targetShot = true;
@@ -118,6 +117,9 @@ public class RandomPointsControllerV2 {
         scaleAnimation.play();
 
         return animatedTarget;
-        //return new Group(animatedTarget);
+    }
+
+    public boolean isSceneFinished() {
+        return score >= 20;
     }
 }

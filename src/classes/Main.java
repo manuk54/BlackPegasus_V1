@@ -10,22 +10,37 @@ public class Main extends Application {
     private static final int WindowWidth = 1000;
     private static final int WindowHeight = 540;
 
+    public static boolean changeScene = false;
+    private String nickname;
+    private Parent root;
+    private Scene scene;
 
-    public static String nickname;
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Tales of the Black Pegasus");
 
-        Parent introParent = FXMLLoader.load(getClass().getResource("/fxml/introFXML.fxml"));
-        Scene introScene = new Scene(introParent, WindowWidth, WindowHeight);
-//        primaryStage.setScene(introScene);
+        //load intro
+        FXMLLoader introLoader = new FXMLLoader(getClass().getResource("/fxml/introFXML.fxml"));
+        Parent introView = introLoader.load();
+        Scene introScene = new Scene(introView,WindowWidth,WindowHeight);
 
-        Parent randomPointsParent = FXMLLoader.load(getClass().getResource("/fxml/RandomPointsFXML.fxml"));
-        Scene randomPointsScene = new Scene(randomPointsParent,WindowWidth,WindowHeight);
-//        RandomPoints randomPointsObject = new RandomPoints(randomPointsParent.getco);
-        primaryStage.setScene(randomPointsScene);
+        //load RandomPoints
+        FXMLLoader randomPointsLoader  = new FXMLLoader(getClass().getResource("/fxml/RandomPointsFXML.fxml"));
+        Parent randomPointsView = randomPointsLoader.load();
+        Scene randomPointsScene = new Scene(randomPointsView,WindowWidth,WindowHeight);
 
+        //set up controllers
+        IntroController introController = (IntroController)introLoader.getController();
+        introController.setNextScene(randomPointsScene);
+        nickname = introController.getNickname();
+
+        primaryStage.setScene(introScene);
         primaryStage.show();
+
+    }
+
+    public void switchScene(String fxml){
+
     }
 
     public static int getWindowWidth() {
