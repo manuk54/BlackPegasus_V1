@@ -14,9 +14,11 @@ public class Main extends Application {
     public static String nickname;
     private Parent root;
     private Scene scene;
+    private Model model;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        model = new Model();
         primaryStage.setTitle("Tales of the Black Pegasus");
 
         //load intro
@@ -35,10 +37,12 @@ public class Main extends Application {
         IntroController introController = (IntroController)introLoader.getController();
         introController.setNextScene(randomPointsScene);
         introController.setCurrentScene(introScene);
+        introController.setModel(model);
         nickname = introController.getNickname();
 
         RandomPointsController randomPointsController = (RandomPointsController)randomPointsLoader.getController();
         randomPointsController.setCurrentScene(primaryStage.getScene());
+        randomPointsController.setModel(model);
 
         primaryStage.setScene(introScene);
         primaryStage.show();

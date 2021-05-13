@@ -20,14 +20,16 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class RandomPointsController {
+    private Model model;
     private Scene currentScene;
     private Scene nextScene;
     private double targetLiveTime = 2500;
     private double targetRadius = 25;
+    private double reloadTime = 1000;
     private int score = 0;
     private long lastShotTime;
-    private double reloadTime = 1000;
     private boolean targetDown = false;
+    private boolean firstClick = true;
 
     @FXML
     private Circle startCircle;
@@ -49,18 +51,26 @@ public class RandomPointsController {
 
     @FXML
     public void handleStartCircleClicked(MouseEvent actionEvent){
+        if(firstClick){
+            startCircle.setTranslateX(Math.random()*(300-100)+50);
+            startCircle.setTranslateY(Math.random()*(300-100)+50);
+            scoreLabel.setText("Ahoi " + model.getNickname() + "! Let`s get the job done! U need to shoot at list 10 goddamn bubbles. Fire in the hole!");
+            firstClick = false;
+        }
+        else{
         scoreLabel.setText("Your score: " + score);
         score++;
         lastShotTime = System.currentTimeMillis();
         targetDown = true;
         updateScoreLabel();
         clearPane();
+        }
     }
 
 
     @FXML
     public void initialize(){
-        scoreLabel.setText("Ahoi " + Main.getNickname()+" here is our first game. You need to shoot at least 10 of these dammed Balls. Let`s go, shoot the first one!");
+
     }
 
     private void targetClicked(){
@@ -131,5 +141,8 @@ public class RandomPointsController {
     private void openNextScene(ActionEvent actionEvent){
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setScene(nextScene);
+    }
+    public void setModel(Model model){
+        this.model = model;
     }
 }

@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.awt.*;
 
 public class IntroController {
+    private Model model;
     private Scene currentScene;
     private String nickname;
     private Scene nextScene;
@@ -71,10 +72,11 @@ public class IntroController {
         lowerHBox.getChildren().add(adviceForNickname);
         playersName.setOnAction(actionEvent -> {
             nickname = playersName.getText().toString();
-            Main.setNickname(nickname);
+             model.setNickname(nickname);
             if(nicknameHasOnlyLetters()){
 
                 showGreetings();
+                model.setIntroFinished(true);
                 openNextScene(actionEvent);
             }else{
                 adviceForNickname.setText("!Please use letters only!");
@@ -107,5 +109,8 @@ public class IntroController {
             if(!((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))) return false;
         }
         return true;
+    }
+    public void setModel(Model model){
+        this.model = model;
     }
 }

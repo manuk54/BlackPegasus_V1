@@ -23,7 +23,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <Label fx:id="scoreLabel" text="Your score:" wrapText="true">
+                  <Label fx:id="scoreLabel" text="Click on the circle!" wrapText="true">
                      <font>
                         <Font name="Bell MT" size="22.0" />
                      </font>
