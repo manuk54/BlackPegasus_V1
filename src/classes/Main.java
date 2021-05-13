@@ -11,7 +11,7 @@ public class Main extends Application {
     private static final int WindowHeight = 540;
 
     public static boolean changeScene = false;
-    private static String nickname;
+    public static String nickname;
     private Parent root;
     private Scene scene;
 
@@ -25,9 +25,6 @@ public class Main extends Application {
         Scene introScene = new Scene(introView,WindowWidth,WindowHeight);
 
         //load 3 2 1 level starter
-        FXMLLoader startLevelLoader = new FXMLLoader(getClass().getResource("/fxml/StartLevelFXML.fxml"));
-        Parent startLevelView = startLevelLoader.load();
-        Scene startLevelScene = new Scene(startLevelView,WindowWidth,WindowHeight);
 
         //load RandomPoints
         FXMLLoader randomPointsLoader  = new FXMLLoader(getClass().getResource("/fxml/RandomPointsFXML.fxml"));
@@ -40,9 +37,6 @@ public class Main extends Application {
         introController.setCurrentScene(introScene);
         nickname = introController.getNickname();
 
-        StartLevelController startLevelController = (StartLevelController)startLevelLoader.getController();
-        startLevelController.setNextScene(randomPointsScene);
-
         RandomPointsController randomPointsController = (RandomPointsController)randomPointsLoader.getController();
         randomPointsController.setCurrentScene(primaryStage.getScene());
 
@@ -51,7 +45,11 @@ public class Main extends Application {
 
     }
 
-    public static void setNickname(String nick){nickname = nick;}
+    public static void setNickname(String nick){nickname = nick;
+        System.out.println(nickname);
+    }
+
+    public static String getNickname() { System.out.println(nickname);return nickname; }
 
     public static int getWindowWidth() {
         return WindowWidth;

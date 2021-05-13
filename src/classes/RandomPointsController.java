@@ -32,8 +32,6 @@ public class RandomPointsController {
     @FXML
     private Circle startCircle;
     @FXML
-    private Button startButton;
-    @FXML
     private Pane pane;
     @FXML
     private Label scoreLabel;
@@ -42,9 +40,9 @@ public class RandomPointsController {
     public void handleMousePressed(MouseEvent mouseEvent){
         if(targetDown){
             targetDown=false;
-        Group target = createAnimatedTarget();
-        pane.getChildren().add(target);
-        lastShotTime = System.currentTimeMillis();
+            Group target = createAnimatedTarget();
+            pane.getChildren().add(target);
+            lastShotTime = System.currentTimeMillis();
             System.out.println("new target set");
         }
     }
@@ -62,8 +60,7 @@ public class RandomPointsController {
 
     @FXML
     public void initialize(){
-        startCircle.setCenterX(Main.getWindowWidth()/2);
-        startCircle.setCenterY(Main.getWindowHeight()/2 - scoreLabel.getHeight());
+        scoreLabel.setText("Ahoi " + Main.getNickname()+" here is our first game. You need to shoot at least 10 of these dammed Balls. Let`s go, shoot the first one!");
     }
 
     private void targetClicked(){
@@ -85,8 +82,8 @@ public class RandomPointsController {
     public Circle createCircleAtRandomPosition(double radius){
         Circle circle = new Circle(radius);
         Random rdm = new Random();
-        circle.setCenterX(Math.random()*(pane.getWidth()-radius*3)+radius*1.5);
-        circle.setCenterY(Math.random()*(pane.getHeight()-radius*1.5-(scoreLabel.getHeight()+radius*1.5))+scoreLabel.getHeight()+radius*1.5); // hBox.getHeight() = 100
+        circle.setCenterX(Math.random()*(pane.getWidth()-radius*2)+radius*2);
+        circle.setCenterY(Math.random()*(pane.getHeight()-radius*2)+radius*2);
         circle.setFill(Color.RED);
 
         return circle;

@@ -70,9 +70,10 @@ public class IntroController {
         lowerHBox.getChildren().add(playersName);
         lowerHBox.getChildren().add(adviceForNickname);
         playersName.setOnAction(actionEvent -> {
+            nickname = playersName.getText().toString();
+            Main.setNickname(nickname);
             if(nicknameHasOnlyLetters()){
-                nickname = playersName.getText().toString();
-                Main.setNickname(nickname);
+
                 showGreetings();
                 openNextScene(actionEvent);
             }else{
