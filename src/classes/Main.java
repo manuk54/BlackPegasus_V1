@@ -24,6 +24,11 @@ public class Main extends Application {
         Parent introView = introLoader.load();
         Scene introScene = new Scene(introView,WindowWidth,WindowHeight);
 
+        //load 3 2 1 level starter
+        FXMLLoader startLevelLoader = new FXMLLoader(getClass().getResource("/fxml/StartLevelFXML.fxml"));
+        Parent startLevelView = startLevelLoader.load();
+        Scene startLevelScene = new Scene(startLevelView,WindowWidth,WindowHeight);
+
         //load RandomPoints
         FXMLLoader randomPointsLoader  = new FXMLLoader(getClass().getResource("/fxml/RandomPointsFXML.fxml"));
         Parent randomPointsView = randomPointsLoader.load();
@@ -32,14 +37,17 @@ public class Main extends Application {
         //set up controllers
         IntroController introController = (IntroController)introLoader.getController();
         introController.setNextScene(randomPointsScene);
+        introController.setCurrentScene(introScene);
         nickname = introController.getNickname();
+
+        StartLevelController startLevelController = (StartLevelController)startLevelLoader.getController();
+        startLevelController.setNextScene(randomPointsScene);
+
+        RandomPointsController randomPointsController = (RandomPointsController)randomPointsLoader.getController();
+        randomPointsController.setCurrentScene(primaryStage.getScene());
 
         primaryStage.setScene(introScene);
         primaryStage.show();
-
-    }
-
-    public void switchScene(String fxml){
 
     }
 

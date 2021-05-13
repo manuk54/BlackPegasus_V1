@@ -7,13 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.awt.*;
 
 public class IntroController {
+    private Scene currentScene;
     private String nickname;
     private Scene nextScene;
+    private int speechNum = 0;
+    private String[] textToShow = {"Hey landlubber! Welcome onboard Ar-gh-gh-gh",
+                                    "How do we call u?"};
 
     @FXML
     private Label introTextLabel;
@@ -52,6 +57,20 @@ public class IntroController {
         }
         return true;
     }
+
+    public void setCurrentScene(Scene scene){
+        currentScene = scene;
+        currentScene.setOnKeyPressed(e-> {
+            if(e.getCode() == KeyCode.SPACE)
+            showNextText();
+        });
+    }
+
+    private void showNextText(){
+        introTextLabel.setText(textToShow[speechNum]);
+        speechNum++;
+    }
+
     public void setNextScene(Scene scene){
         nextScene = scene;
     }
