@@ -3,46 +3,35 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.IntroController">
-   <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
+<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.IntroController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Label fx:id="introTextLabel" prefHeight="79.0" prefWidth="251.0" text="Hello landlubber welcome onboard! Ar-h-h-h." wrapText="true" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="116.0" prefWidth="570.0">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-         <children>
-            <Label prefHeight="86.0" prefWidth="143.0" text="Enter your name" />
-            <VBox alignment="CENTER" prefHeight="95.0" prefWidth="185.0">
+            <HBox fx:id="upperHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
                <children>
-                  <TextField fx:id="playersName" onAction="#handleTextFieldEnter" prefHeight="26.0" prefWidth="151.0" promptText="landlubber" />
-                  <Label fx:id="adviceForNickname" prefHeight="18.0" prefWidth="150.0" textAlignment="CENTER" textFill="#f20b0b" textOverrun="CLIP">
-                     <VBox.margin>
-                        <Insets bottom="-30.0" top="10.0" />
-                     </VBox.margin></Label>
-               </children></VBox>
-            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#handleButton" text="Submit">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-   </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-</VBox>
+                  <Label fx:id="introTextLabel" text="&lt;Press AnyButton&gt;">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Bell MT" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <HBox fx:id="lowerHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

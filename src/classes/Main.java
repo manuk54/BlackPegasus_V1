@@ -11,7 +11,7 @@ public class Main extends Application {
     private static final int WindowHeight = 540;
 
     public static boolean changeScene = false;
-    private String nickname;
+    private static String nickname;
     private Parent root;
     private Scene scene;
 
@@ -50,6 +50,8 @@ public class Main extends Application {
         primaryStage.show();
 
     }
+
+    public static void setNickname(String nick){nickname = nick;}
 
     public static int getWindowWidth() {
         return WindowWidth;
