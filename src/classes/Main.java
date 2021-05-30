@@ -7,8 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private static final int WindowWidth = 1000;
-    private static final int WindowHeight = 540;
+    private static int WindowWidth;
+    private static int WindowHeight;
 
     public static boolean changeScene = false;
     public static String nickname;
@@ -20,31 +20,41 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         model = new Model();
         primaryStage.setTitle("Tales of the Black Pegasus");
+        WindowWidth = model.getWindowWidth();
+        WindowHeight = model.getWindowHeight();
 
         //load intro
         FXMLLoader introLoader = new FXMLLoader(getClass().getResource("/fxml/introFXML.fxml"));
         Parent introView = introLoader.load();
         Scene introScene = new Scene(introView,WindowWidth,WindowHeight);
 
-        //load 3 2 1 level starter
-
         //load RandomPoints
         FXMLLoader randomPointsLoader  = new FXMLLoader(getClass().getResource("/fxml/RandomPointsFXML.fxml"));
         Parent randomPointsView = randomPointsLoader.load();
         Scene randomPointsScene = new Scene(randomPointsView,WindowWidth,WindowHeight);
 
+        //load Dice
+        FXMLLoader diceLoader = new FXMLLoader(getClass().getResource("/fxml/diceFXML.fxml"));
+        Parent diceView = diceLoader.load();
+        Scene diceScene = new Scene(diceView, WindowWidth, WindowHeight);
+
         //set up controllers
         IntroController introController = (IntroController)introLoader.getController();
+        introController.setStage(primaryStage);
         introController.setNextScene(randomPointsScene);
         introController.setCurrentScene(introScene);
         introController.setModel(model);
         nickname = introController.getNickname();
 
         RandomPointsController randomPointsController = (RandomPointsController)randomPointsLoader.getController();
-        randomPointsController.setCurrentScene(primaryStage.getScene());
+        randomPointsController.setStage(primaryStage);
+        randomPointsController.setCurrentScene(randomPointsScene);
         randomPointsController.setModel(model);
+        randomPointsController.setNextScene(diceScene);
 
-        primaryStage.setScene(introScene);
+        DiceController diceController = (DiceController) diceLoader.getController();
+
+        primaryStage.setScene(randomPointsScene);
         primaryStage.show();
 
     }

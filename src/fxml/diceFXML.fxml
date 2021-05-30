@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="vb" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1000.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.DiceController">
+   <children>
+      <HBox fx:id="hb1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <StackPane fx:id="sp1" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle fx:id="dice" arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" onMousePressed="#handlePlay1" rotate="35.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect></Rectangle>
+                  <Label fx:id="dice1" text="Dice 1" textAlignment="CENTER" textFill="#6bcc04">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="sp2" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" rotate="55.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="dice2" text="Dice 2" textFill="#6bcc04">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="sp3" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" rotate="75.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="dice3" text="Dice 3" textFill="#6bcc04">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="sp4" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="sum" text="Your score" textAlignment="CENTER" textFill="#6bcc04">
+                     <font>
+                        <Font name="Luminari" size="14.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <Button id="button1" fx:id="play1" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlePlay1" text="Play round 1" textAlignment="CENTER" textFill="#050505">
+         <font>
+            <Font name="Luminari" size="18.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Button fx:id="play2" mnemonicParsing="false" onAction="#handlePlay2" text="Play round 2">
+         <font>
+            <Font name="Luminari" size="18.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+      <Button fx:id="play3" mnemonicParsing="false" onAction="#handlePlay3" text="Play round 3">
+         <font>
+            <Font name="Luminari" size="18.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+      <HBox fx:id="hb2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <StackPane fx:id="wsp1" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="80.0" rotate="35.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect></Rectangle>
+                  <Label fx:id="wdice1" text="Dice 1">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="wsp2" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="80.0" rotate="55.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect></Rectangle>
+                  <Label fx:id="wdice2" text="Dice 2">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="wsp3" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="80.0" rotate="75.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect></Rectangle>
+                  <Label fx:id="wdice3" text="Dice 3">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="wsp4" prefHeight="150.0" prefWidth="150.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="80.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="wsum" text="My score" textAlignment="CENTER">
+                     <font>
+                        <Font name="JetBrains Mono ExtraBold Italic" size="14.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <Label fx:id="info" text="Click play round 1" textAlignment="CENTER" textFill="#eb2512">
+         <font>
+            <Font name="Luminari" size="24.0" />
+         </font></Label>
+   </children>
+</VBox>

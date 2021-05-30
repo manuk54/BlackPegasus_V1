@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -19,13 +21,14 @@ import java.awt.*;
 
 public class IntroController {
     private Model model;
-    private Scene currentScene;
     private String nickname;
-    private Scene nextScene;
     private int speechNum = 0;
     private boolean sceneIsFinished = false;
     private String[] textToShow = {"Hey landlubber! Welcome onboard Ar-gh-gh-gh",
                                     "How do we call u?"};
+    private Stage stage = null;
+    private Scene currentScene = null;
+    private Scene nextScene = null;
 
     private Label writeYourNickname;
     private TextField playersName;
@@ -35,27 +38,27 @@ public class IntroController {
     @FXML
     private HBox upperHBox;
     @FXML
-    private HBox lowerHBox;
+    private VBox lowerHBox;
     @FXML
     private Label introTextLabel;
 
     @FXML
     public void initialize(){
-//        introTextLabel.setPrefWidth(Main.getWindowWidth()*0.75);
-        lowerHBox.setAlignment(Pos.CENTER);
+//        lowerHBox.setAlignment(Pos.CENTER);
     }
 
     public void setCurrentScene(Scene scene){
         currentScene = scene;
         currentScene.setOnKeyPressed(e-> {
-            if(speechNum < textToShow.length)
-                showNextText();
+            // if(speechNum < textToShow.length)
+            showNextText();
             if(sceneIsFinished){
 //                openNextScene(e);
             }
         });
     }
 
+    //Displays next speech on scoreLabel (under ActionEvent)
     private void showNextText(){
         introTextLabel.setText(textToShow[speechNum]);
         if(speechNum < textToShow.length-1)
@@ -63,23 +66,25 @@ public class IntroController {
         else openNicknameField();
     }
 
+    //opens field to enter a nickname
     private void openNicknameField(){
         playersName = new TextField();
         writeYourNickname = new Label("Write your name: ");
         adviceForNickname = new Label();
 
+        playersName.setMaxWidth(model.getWindowWidth()/4);
         lowerHBox.getChildren().add(playersName);
         lowerHBox.getChildren().add(adviceForNickname);
         playersName.setOnAction(actionEvent -> {
-            nickname = playersName.getText().toString();
-             model.setNickname(nickname);
+            nickname = playersName.getText().toString(); //
+            model.setNickname(nickname);
             if(nicknameHasOnlyLetters()){
-
                 showGreetings();
                 model.setIntroFinished(true);
                 openNextScene(actionEvent);
             }else{
                 adviceForNickname.setText("!Please use letters only!");
+                adviceForNickname.setTextFill(Color.color(1, 0, 0));
             }
         });
     }
@@ -87,15 +92,17 @@ public class IntroController {
     private void showGreetings(){
         introTextLabel.setText("Ahoi " + nickname+ " let`s get the job done!");
         sceneIsFinished = true;
-//        lowerHBox.getChildren().add(new Rectangle(0,0,lowerHBox.getWidth(),lowerHBox.getHeight()));
     }
 
     public void setNextScene(Scene scene){
         nextScene = scene;
     }
 
+    public void setStage(Stage stage){
+        this.stage = stage;
+    }
+
     private void openNextScene(ActionEvent keyEvent){
-        Stage stage = (Stage) ((Node)keyEvent.getSource()).getScene().getWindow();
         stage.setScene(nextScene);
     }
 

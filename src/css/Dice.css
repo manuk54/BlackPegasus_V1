@@ -1,0 +1,18 @@
+.button1{//warum geht es nicht?
+-fx-background-image: url(.../images/sky.png);
+//-fx-background-size: contain;
+}
+
+.button:pressed{
+-fx-border-color: gray;
+    -fx-border-width: 2;
+}
+.button:hover{
+//-fx-border-color: red;
+-fx-background-color: linear-gradient(#339970, #3399FF);
+    -fx-border-width: 2;
+}
+}
+
+//fuer Button figure und co...
+//fuer Farbe Rectangle? alternative in Scene Builder
