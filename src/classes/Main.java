@@ -1,5 +1,7 @@
 package classes;
 
+import classes.Chapter1.*;
+import classes.Chapter2.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,54 +25,45 @@ public class Main extends Application {
         WindowWidth = model.getWindowWidth();
         WindowHeight = model.getWindowHeight();
 
+        //load Chapter 1
+        FXMLLoader ch1Loader = new FXMLLoader(getClass().getResource("/fxml/Ch1.fxml"));
+        Parent ch1View = ch1Loader.load();
+        Scene ch1Scene = new Scene(ch1View,WindowWidth,WindowHeight);
+
         //load intro
         FXMLLoader introLoader = new FXMLLoader(getClass().getResource("/fxml/introFXML.fxml"));
         Parent introView = introLoader.load();
         Scene introScene = new Scene(introView,WindowWidth,WindowHeight);
 
         //load RandomPoints
-        FXMLLoader randomPointsLoader  = new FXMLLoader(getClass().getResource("/fxml/RandomPointsFXML.fxml"));
-        Parent randomPointsView = randomPointsLoader.load();
-        Scene randomPointsScene = new Scene(randomPointsView,WindowWidth,WindowHeight);
 
-        //load Dice
-        FXMLLoader diceLoader = new FXMLLoader(getClass().getResource("/fxml/diceFXML.fxml"));
-        Parent diceView = diceLoader.load();
-        Scene diceScene = new Scene(diceView, WindowWidth, WindowHeight);
+
+        //load Chapter 2
+
+
+
 
         //set up controllers
         IntroController introController = (IntroController)introLoader.getController();
         introController.setStage(primaryStage);
-        introController.setNextScene(randomPointsScene);
+//        introController.setNextScene(randomPointsScene);
         introController.setCurrentScene(introScene);
         introController.setModel(model);
         nickname = introController.getNickname();
 
-        RandomPointsController randomPointsController = (RandomPointsController)randomPointsLoader.getController();
-        randomPointsController.setStage(primaryStage);
-        randomPointsController.setCurrentScene(randomPointsScene);
-        randomPointsController.setModel(model);
-        randomPointsController.setNextScene(diceScene);
+        Ch1 chap1Controller = (Ch1) ch1Loader.getController();
+        chap1Controller.setCurrentScene(ch1Scene);
+        chap1Controller.setStage(primaryStage);
+        chap1Controller.setModel(model);
+//        chap1Controller.setNextScene(randomPointsScene);
 
-        DiceController diceController = (DiceController) diceLoader.getController();
 
-        primaryStage.setScene(randomPointsScene);
+//        chap2Controller.setNextScene(randomPointsScene);
+
+
+        primaryStage.setScene(ch1Scene);
         primaryStage.show();
 
-    }
-
-    public static void setNickname(String nick){nickname = nick;
-        System.out.println(nickname);
-    }
-
-    public static String getNickname() { System.out.println(nickname);return nickname; }
-
-    public static int getWindowWidth() {
-        return WindowWidth;
-    }
-
-    public static int getWindowHeight() {
-        return WindowHeight;
     }
 
     public static void main(String[] args) {
