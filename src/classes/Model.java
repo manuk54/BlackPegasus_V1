@@ -11,6 +11,10 @@ public class Model {
     private static final int WindowHeight = 540;
     private static final Font defaultFont = Font.font("Bell MT",22);
 
+    private int myMoney = 100;
+
+    private int riotWilliam = 0;
+
     private boolean introFinished = false;
     private boolean randomPointsFinished = false;
     private String nickname = "def123";
@@ -49,10 +53,41 @@ public class Model {
 
     String[] choiceCh2 = {"Go to tavern","Return to the ship and sleep"};
 
-    String[] textCh2p1 = {"Chapter 2.1. In the tavern\n" +
+    String[] textCh2p1Intro = {"Entering the building you watch the things happening inside. A bunch of black musicians singing some hasty shuntee songs, a beautiful ample woman standing at the bar stand, tempting you to come get a drink and have a talk with her. In a corner there is an old man without a leg telling stories to a bunch of drunk people who gathered around him. In another part of the room you see a few people trying their luck with the dice. You check through your pockets. You have 100 Reals.\n"};
+
+    String[] textBarmaid = {"- Hello, sweetheart. - says the woman as you approach her. - Want a drink?","You start drinking and listen to what people near you talk. Suddenly you ask the barmaid about the nearby islands.",
+    "- Ha. - she smirks looking at you, but doesn't refuse you. - We are on a group of five small nameless islands. The biggest of them is located in the middle. We call it the \"open jaws\", because it looks like that. It is said to be haunted by the Black Pegasus. But I don't actually believe that, if you ask me.",
+            "The smallest island is between the jaws to the east. An absolutely empty narrow line of sand. It only makes it difficult to stop in the bay.",
+            "Our island is already known to you. North-east from the jaws. The only one where you can have fun. With me, for example. - she winks at you.",
+            "And of course you have already heard of the Spanish fortress on the island to the west from here. I don't really know, what exactly they are looking for here. There are no aborigenes around. We are the only people living on the islands",
+            "The last island is an empty spot to the south. May be an oasis, may be a prison. A lot of palmtrees, no animals besides seagulls. A mean place.",
+            "Well, captain, now you know more about where you are.\n" +
+                    "\n" +
+                    "*after a few more minutes of talking with the barmaid, you leave her alone*\n"};
+
+    String[] textOldMan = {"You approach the group of people around the one-legged man and listen.",
+            "- It is said that the captain of the Black Pegasus was the devil himself. He got his ship alone by killing all the crew on it. All by himself! And then he brought the ship to the jaws. Without any crew. Doesn't seem to be true, captain? Maybe. Still it is true that the island hides his treasure till now. \n" +
+                    "But be careful, the crew and the captain himself haunt the island after the ship sank. More than that, everyone who died in their attempts to get the chest, joined those already dead in protecting it.\n",
+    "You have the right to trust anyone, but if it were me instead of you, I ain't have got the guts for that.\n" +
             "\n" +
-            "Entering the building you watch the things happening inside. A bunch of black musicians singing some hasty shuntee songs, a beautiful ample woman standing at the bar stand, tempting you to come get a drink and have a talk with her. In a corner there is an old man without \n" +
-            "a leg telling stories to a bunch of drunk people who gathered around him. In another part of the room you see a few people trying their luck with the dice. You check through your pockets. You have 100 Reals.\n"};
+            "*after staying there a little more, you leave them to themselves*"};
+    String[] textDicePlayers = {"- Hey, cap. Want to roll dice with us? We throw the three dice up to three times. The one who won the round before a tie wins the tie and, as a result, wins the game."};
+
+    String[] textCh3Intro = {"Off shore again. You are behind the man at the steering of the ship. She does not have a name for you yet, but it has a Spanish name you cannot even pronounce.","You see William approaching you. Again.",
+            "- Hey, cap! - he says loudly, just so you can hear him above the sounds of the sea and the ship. - Remember wha'I told ya yesterday? Let's get aside.",
+            "You agree, going with him to the borders of the upper deck. He stands very close to you, and you can see how serious he has got in just a moment. You notice the same lightening in his eyes as at the moment he was explaining the escape plan to you in the Spanish fortress.",
+    "- You probably have already heard about the curse and the chest of the Black Pegasus. Well, I know its place. In one of two big caves on the highest peak of \"the jaws\". I can bring you there, if you make me your quartermeister"};
+
+    String[] textCh3p1 = {"- I don't think I want you by my side. - you cut him off shortly, stinging with each word. - Encarcer him! - you yell at the sailors",
+    "A few men, who did a less important job on the deck in your neighbourhood, came by swiftly and took William by the arms, wordlessly getting him to the orlop, under the deck."};
+    String[] textCh3p2={"You don't answer, but your face changes into one of careful interest and attention. He notices that.",
+    "- Well, yes, captain. I agree that you can want more details before taking such an important decision.",
+            "The caves have beautiful sculpted archs at the entrance. Each with a symbol. You shall choose the one that the Black Pegasus wore on the sails.",
+            "- What symbol was it? Do you know it? - you ask.\n" +
+                    "\n" +
+                    "- Make me your quartermeister, cap. Then we'll be talking. I will show it to you as soon as we arrive. - he lend his hand to you for a handshake.\n"};
+
+    String[] textCh3p2p2 = {"You shake hands with your new quartermeister. From now on every command of yours is always repeated by him, so you don't need to yell at the team. Because he will do it."};
 
     public static int getWindowWidth() { return WindowWidth; }
 
@@ -60,15 +95,34 @@ public class Model {
 
     public static Font getDefaultFont() { return defaultFont;}
 
+    public int getMyMoney(){ return myMoney;}
+
     public String[] getTextCh1(){return textCh1;}
 
     public String[] getTextCh2(){return textCh2;}
 
     public String[] getChoiceCh2() {return choiceCh2;}
 
-    public boolean isIntroFinished() {
-        return introFinished;
+    public String[][] getTextCh2p1(){
+        String[][] textCh2p1 = new String[4][1];
+        textCh2p1[0] = textCh2p1Intro;
+        textCh2p1[1] = textBarmaid;
+        textCh2p1[2] = textOldMan;
+        textCh2p1[3] = textDicePlayers;
+        return textCh2p1;
     }
+
+    public String[][] getTextCh3(){
+        String[][] textCh3 = new String[4][1];
+        textCh3[0] = textCh3Intro;
+        textCh3[1] = textCh3p1;
+        textCh3[2] = textCh3p2;
+        textCh3[3] = textCh3p2p2;
+        return textCh3;
+    }
+
+    public void setRiotWilliam(int value){ riotWilliam = value;}
+    public int getRiotWilliam(){ return  riotWilliam;}
 
     public void setRandomPointsFinished(boolean randomPointsFinished) {
         this.randomPointsFinished = randomPointsFinished;

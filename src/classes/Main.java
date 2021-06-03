@@ -2,6 +2,7 @@ package classes;
 
 import classes.Chapter1.*;
 import classes.Chapter2.*;
+import classes.Chapter3.Ch3;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,37 +30,29 @@ public class Main extends Application {
         FXMLLoader ch1Loader = new FXMLLoader(getClass().getResource("/fxml/Ch1.fxml"));
         Parent ch1View = ch1Loader.load();
         Scene ch1Scene = new Scene(ch1View,WindowWidth,WindowHeight);
+    //Part commented below is used for testing
+        /* FXMLLoader ch3Loader = new FXMLLoader(getClass().getResource("/fxml/Ch3.fxml"));
+        Parent ch3Parent = ch3Loader.load();
+        Scene ch3Scene = new Scene(ch3Parent,model.getWindowWidth(),model.getWindowHeight());
 
-        //load intro
-        FXMLLoader introLoader = new FXMLLoader(getClass().getResource("/fxml/introFXML.fxml"));
-        Parent introView = introLoader.load();
-        Scene introScene = new Scene(introView,WindowWidth,WindowHeight);
+        Ch3 ch3Controller = (Ch3) ch3Loader.getController();
+        ch3Controller.setCurrentScene(ch3Scene);
+        ch3Controller.setModel(model);
+        ch3Controller.setStage(primaryStage);
 
-        //load RandomPoints
+        FXMLLoader ch2p1Loader = new FXMLLoader(getClass().getResource("/fxml/Ch2p1.fxml"));
+        Parent ch2p1View = ch2p1Loader.load();
+        Scene ch2p1Scene = new Scene(ch2p1View,model.getWindowWidth(),model.getWindowHeight());
 
-
-        //load Chapter 2
-
-
-
-
-        //set up controllers
-        IntroController introController = (IntroController)introLoader.getController();
-        introController.setStage(primaryStage);
-//        introController.setNextScene(randomPointsScene);
-        introController.setCurrentScene(introScene);
-        introController.setModel(model);
-        nickname = introController.getNickname();
+        Ch2p1 chap2p1Controller = (Ch2p1) ch2p1Loader.getController();
+        chap2p1Controller.setCurrentScene(ch2p1Scene);
+        chap2p1Controller.setStage(primaryStage);
+        chap2p1Controller.setModel(model);*/
 
         Ch1 chap1Controller = (Ch1) ch1Loader.getController();
         chap1Controller.setCurrentScene(ch1Scene);
         chap1Controller.setStage(primaryStage);
         chap1Controller.setModel(model);
-//        chap1Controller.setNextScene(randomPointsScene);
-
-
-//        chap2Controller.setNextScene(randomPointsScene);
-
 
         primaryStage.setScene(ch1Scene);
         primaryStage.show();

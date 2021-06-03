@@ -49,9 +49,8 @@ public class Ch2 {
 
     // activate buttons
     private void addChoice(){
-        //TODO
-//        choice0.setText(model.getChoiceCh2()[0]);
-//        choice1.setText(model.getChoiceCh2()[1]);
+        choice0.setText(model.getChoiceCh2()[0]);
+        choice1.setText(model.getChoiceCh2()[1]);
 
         choice0.setText("Go to tavern");
         choice1.setText("Return to the ship and sleep");
@@ -66,6 +65,7 @@ public class Ch2 {
             choice0.setVisible(false);
             choice1.setVisible(false);
             try {
+                System.out.println("loadP1");
                 loadP1Scene();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -95,7 +95,7 @@ public class Ch2 {
         chap2p1Controller.setCurrentScene(ch2p1Scene);
         chap2p1Controller.setStage(stage);
         chap2p1Controller.setModel(model);
-
+        System.out.println("p1 loaded");
         stage.setScene(ch2p1Scene);
     }
 
