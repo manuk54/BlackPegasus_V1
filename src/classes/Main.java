@@ -3,6 +3,7 @@ package classes;
 import classes.Chapter1.*;
 import classes.Chapter2.*;
 import classes.Chapter3.Ch3;
+import classes.Chapter5.Ch5;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,7 +48,16 @@ public class Main extends Application {
         Ch2p1 chap2p1Controller = (Ch2p1) ch2p1Loader.getController();
         chap2p1Controller.setCurrentScene(ch2p1Scene);
         chap2p1Controller.setStage(primaryStage);
-        chap2p1Controller.setModel(model);*/
+        chap2p1Controller.setModel(model);
+
+        FXMLLoader ch5Loader = new FXMLLoader(getClass().getResource("/fxml/Ch5.fxml"));
+        Parent ch5View = ch5Loader.load();
+        Scene ch5Scene = new Scene(ch5View,WindowWidth,WindowHeight);
+
+        Ch5 chap5Controller = (Ch5) ch5Loader.getController();
+        chap5Controller.setCurrentScene(ch5Scene);
+        chap5Controller.setStage(primaryStage);
+        chap5Controller.setModel(model);*/
 
         Ch1 chap1Controller = (Ch1) ch1Loader.getController();
         chap1Controller.setCurrentScene(ch1Scene);

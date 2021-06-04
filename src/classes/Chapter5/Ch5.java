@@ -1,4 +1,4 @@
-package classes.Chapter3;
+package classes.Chapter5;
 
 import classes.Model;
 import javafx.event.ActionEvent;
@@ -9,15 +9,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class Ch3 {
+public class Ch5 {
     private Stage stage  = null;
     private Model model  = null;
     private Scene currentScene = null;
 
     private String[][] textToShow;
-    //model.getTextCh3[textNum][speechNum]
+    //model.getTextCh5[textNum][speechNum]
     private int textNum = 0;
     private int speechNum = 0;
+    //variables to track how many times buttons were pressed
+    private int choice0NumPressed = 0;
     private int choice1NumPressed = 0;
 
     boolean waitForButtonPressed = false;
@@ -34,24 +36,29 @@ public class Ch3 {
     Button choice1;
     @FXML
     public void handleChoice0ButtonAction(ActionEvent actionEvent){
-        //imprison William
-        textNum = 1;
+        choice0NumPressed ++;
+        //end
+        textNum = choice0NumPressed + choice1NumPressed + 1;
         speechNum = 1;
         introTextLabel.setText(textToShow[textNum][0]);
-        model.setRiotWilliam(1);
         enableAllButtons(false);
-       // handleBackButton();
-        //TODO move to the next scene
+
     }
 
     @FXML
     public void handleChoice1ButtonAction(ActionEvent actionEvent){
         choice1NumPressed++;
         enableAllButtons(false);
-        textNum = choice1NumPressed + 1;
+        textNum = choice0NumPressed + choice1NumPressed + 1;
         speechNum = 1;
         introTextLabel.setText(textToShow[textNum][0]);
-
+        if (choice1NumPressed == 1){
+            choice0.setText("Go through the left arch");
+            choice1.setText("Go through the right arch");
+        }
+        if(choice1NumPressed == 2 && choice0NumPressed == 0){
+            textNum = 4;
+        }
 
     }
 
@@ -90,11 +97,11 @@ public class Ch3 {
                 turnAllButtons(true);
             } else if (textNum == 1 ) {
                 //handleBackButton();
+                introTextLabel.setText("THE END!");
             } else if(textNum == 2) {
                 enableAllButtons(true);
-                choice1.setText("Agree to him");
             } else if(textNum == 3){
-                //TODO load ship minigame
+                introTextLabel.setText("THE END!");
             }
         }
     }
@@ -107,5 +114,5 @@ public class Ch3 {
     }
 
     public void setStage(Stage st){ this.stage = st;}
-    public void setModel(Model mo){ this.model = mo; textToShow = model.getTextCh3();}
+    public void setModel(Model mo){ this.model = mo; textToShow = model.getTextCh5();}
 }

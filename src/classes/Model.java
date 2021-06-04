@@ -89,6 +89,21 @@ public class Model {
 
     String[] textCh3p2p2 = {"You shake hands with your new quartermeister. From now on every command of yours is always repeated by him, so you don't need to yell at the team. Because he will do it."};
 
+    String[] textCh5Intro = {"In the morning you leave. The island is getting smaller behind the back of your ship. Sailors singing while working.",
+    "- Where are we moving, cap? - asked the one at the steer."};
+    String[] textCh5p1 = {"- I think it's time we leave this place. - you answer.",
+    "- And what about the treasure? - he asks again.",
+            "- Let legends stay legends, my friend. Turn to south-west, all sails up, you bilge rats! - you yell smiling",
+            "Under a good wind, your ship moves swiftly, and your crew is looking forward to new adventures. Singing and working. Working and singing."};
+    String[] textCh5p2 = {"Soon enough, you stop on the shore of the biggest island. It looks beautiful to you. Having taken William and a few sailors from the ship, you head to the deepness of the forests, up the mountains.",
+            "He did not lie. Two arches in the stone. Beautiful as hell. You watch the symbols, but they don't tell you a thing. You have no clue which is the one you need. You turn your eyes to William, and he points at the "};
+
+    String[] textCh5p2p1 = {"You enter the cave. After walking a bit into the deepness, you hesitate. Just for a few moments, as your eyes catch the view a small crystal.",
+            "It starts glowing brighter as it gathers energy from your torch. Soon the rock wall splits into two, opening an entrance into a room full of gold and precious stones, metals and things. That is a lot of money.",
+            "You approach him and angrily take your sword out. He had no time to say a word. His blood spilled onto the floor and the gold."};
+    String[] textCh5p2p2 = {"You go into the cave, and suddenly realize that there is no way out anymore. What kind of magic is this? What happened... Why did that happen?... You see something moving around. Ghosts. Though they seem to be harmless, because you can easily get through them, the swords they wear are real.",
+            "They slaughter all of you. You can see your body fall. You can hold your sword. But you are one of them. A new protector of the treasures of the \"Black Pegasus\"."};
+
     public static int getWindowWidth() { return WindowWidth; }
 
     public static int getWindowHeight() { return WindowHeight; }
@@ -121,6 +136,21 @@ public class Model {
         textCh3[2] = textCh3p2;
         textCh3[3] = textCh3p2p2;
         return textCh3;
+    }
+
+    public String[][] getTextCh5(){
+        String[][] textCh5 = new String[5][1];
+        textCh5[0] = textCh5Intro;
+        textCh5[1] = textCh5p1;
+
+        String variant = "right";
+        if(riotWilliam == 0) variant = "left";
+        textCh5p2[textCh5p2.length-1] += variant;
+        textCh5[2] = textCh5p2;
+        if(variant.equals("left")) textCh5p2p1[textCh5p2p1.length-1] = "You look at him, and nod your head. He is worth your trust.";
+        textCh5[3] = textCh5p2p1;
+        textCh5[4] = textCh5p2p2;
+        return textCh5;
     }
 
     public void setRiotWilliam(int value){ riotWilliam = value;}
