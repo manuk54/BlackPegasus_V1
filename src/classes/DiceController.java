@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
         this.m = m;
     }//um den Model-Verweis zu setzen
 
-    //2428375239753098023
+    //2428375239753098023heewah4h
     }
 */
 public class DiceController implements Initializable{//muss mit implements... wenn css und public void ini..
