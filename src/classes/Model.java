@@ -96,6 +96,8 @@ public class Model {
     public static Font getDefaultFont() { return defaultFont;}
 
     public int getMyMoney(){ return myMoney;}
+    public void setMyMoney(int newMoney){ myMoney = newMoney;}
+    public void changeMyMoney(int delta){  myMoney += delta;}
 
     public String[] getTextCh1(){return textCh1;}
 
