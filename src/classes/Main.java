@@ -59,12 +59,18 @@ public class Main extends Application {
         chap5Controller.setStage(primaryStage);
         chap5Controller.setModel(model);*/
 
+        FXMLLoader diceLoader = new FXMLLoader(getClass().getResource("/fxml/diceFXML.fxml"));
+        Parent diceParent = diceLoader.load();
+        Scene diceScene = new Scene(diceParent, WindowWidth, WindowHeight);
+
+        DiceController diceController = diceLoader.getController();
+
         Ch1 chap1Controller = (Ch1) ch1Loader.getController();
         chap1Controller.setCurrentScene(ch1Scene);
         chap1Controller.setStage(primaryStage);
         chap1Controller.setModel(model);
 
-        primaryStage.setScene(ch1Scene);
+        primaryStage.setScene(diceScene);
         primaryStage.show();
 
     }
