@@ -11,7 +11,7 @@ public class Model {
     private static final int WindowHeight = 540;
     private static final Font defaultFont = Font.font("Bell MT",22);
 
-    private int myMoney = 100;
+    private int myMoney = 100; // balance
 
     private int riotWilliam = 0;
 
@@ -95,8 +95,8 @@ public class Model {
 
     public static Font getDefaultFont() { return defaultFont;}
 
-    public int getMyMoney(){ return myMoney;}
-    public void setMyMoney(int newMoney){ myMoney = newMoney;}
+    public int getMyMoney(){ return myMoney;} // get money
+    public void setMyMoney(int newMoney){ myMoney = newMoney;} // set new balance
     public void changeMyMoney(int delta){  myMoney += delta;}
 
     public String[] getTextCh1(){return textCh1;}
