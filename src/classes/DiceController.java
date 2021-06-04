@@ -20,9 +20,7 @@ import java.util.ResourceBundle;
         this.m = m;
     }//um den Model-Verweis zu setzen
 
-    @Override
-    public void initialize() {
-        vb.getChildren().addAll(play1, info);
+    //2428375239753098023
     }
 */
 public class DiceController implements Initializable{//muss mit implements... wenn css und public void ini..
