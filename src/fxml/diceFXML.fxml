@@ -12,7 +12,7 @@
          <children>
             <StackPane fx:id="sp1" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle fx:id="dice" arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" onMousePressed="#handlePlay1" rotate="35.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                  <Rectangle id="d1" fx:id="dice" arcHeight="5.0" arcWidth="5.0" fill="#f6f6f8" height="80.0" onMousePressed="#handlePlay1" rotate="35.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
                      <effect>
                         <InnerShadow />
                      </effect></Rectangle>
@@ -20,15 +20,12 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
             <StackPane fx:id="sp2" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" rotate="55.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6f6f8" height="80.0" rotate="55.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
                      <effect>
                         <InnerShadow />
                      </effect>
@@ -37,15 +34,12 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
             <StackPane fx:id="sp3" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" rotate="75.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6f6f8" height="80.0" rotate="75.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
                      <effect>
                         <InnerShadow />
                      </effect>
@@ -54,15 +48,12 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
             <StackPane fx:id="sp4" prefHeight="150.0" prefWidth="150.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2141ff" height="80.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6f6f8" height="80.0" stroke="BLACK" strokeType="INSIDE" width="80.0">
                      <effect>
                         <InnerShadow />
                      </effect>
@@ -71,9 +62,6 @@
                      <font>
                         <Font name="Luminari" size="14.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
@@ -135,9 +123,6 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
@@ -151,9 +136,6 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="18.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
@@ -167,9 +149,6 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold" size="18.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
@@ -184,17 +163,24 @@
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="14.0" />
                      </font>
-                     <effect>
-                        <Reflection />
-                     </effect>
                   </Label>
                </children>
             </StackPane>
          </children>
       </HBox>
-      <Label fx:id="info" text="Click play round 1" textAlignment="CENTER" textFill="#eb2512">
+      <Label fx:id="info" text="Click to play round 1" textAlignment="CENTER" textFill="#f6f6f8">
          <font>
-            <Font name="Luminari" size="24.0" />
+            <Font name="Luminari" size="18.0" />
          </font></Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Label fx:id="bet" text="You bet 50 reals" textFill="#f6f6f8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" text="Go to ..." />
+         </children>
+      </HBox>
    </children>
 </VBox>

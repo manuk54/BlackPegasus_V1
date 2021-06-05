@@ -11,18 +11,7 @@ import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-//muss in Controller sein weil mit fxml wird Controller automatisch aufgerufen
 
-/*public class Controller implements Initializable {// anders als ohne Scene Builder (ohne dann mit MVC)
-    static BlackModel m;//siehe Seite 5 Vorlesung 4
-
-    public void setM(BlackModel m) {
-        this.m = m;
-    }//um den Model-Verweis zu setzen
-
-    //2428375239753098023heewah4h
-    }
-*/
 public class DiceController implements Initializable{//muss mit implements... wenn css und public void ini..
 
     private DiceAnimation a = new DiceAnimation();
@@ -100,29 +89,30 @@ public class DiceController implements Initializable{//muss mit implements... we
     @FXML
     private HBox hb2;
 
-
+    //Animation
     public void addScene(){
 
-        //vb.getChildren().addAll(createDice1(),createDice2());
-        //muss mit HBox anbinden (die Position ist dann fixiert), sonst kommt ganz Gruppe unter anderen Objekten von VBox
-//check each object in scene builder/Layout/Bound in Parent
-        //Kommt nicht klar mit Koordination
-       // double x = Math.random() * 450 + 15;
         hb1.getChildren().addAll(a.rotatedDice(sp1,300,100),a.rotatedDice(sp2,300,-50),a.rotatedDice(sp3,-300,200),a.createDice(sp4,0,0));//unterschiedlich y damit die chaos in allen Richtungen
-      //  hb1.getChildren().addAll(a.rotatedDice(sp2,300,-50));
-      //  hb1.getChildren().addAll(a.rotatedDice(sp3,-300,200));
-       // hb1.getChildren().addAll(a.createDice(sp4,0,0));// warum muss -400
 
         hb2.getChildren().addAll(a.rotatedDice(wsp1,300,50),a.rotatedDice(wsp2,300,-150),a.rotatedDice(wsp3,-300,-200),a.createDice(wsp4,0,0));
-       // hb2.getChildren().addAll(a.rotatedDice(wsp2,300,-150));
-      //  hb2.getChildren().addAll(a.rotatedDice(wsp3,-300,-200));
-       // hb2.getChildren().addAll(a.createDice(wsp4,0,0));
     }
 
-
-
-    int result;//speichert result von play 1, hat 3 Werte
+    @FXML
+    private Label bet;
+    //Button Action
+    int result1;//speichert result von play 1, hat 3 Werte
     int result2;//speichert result von play 2 fuer action play 3
+    int result3;//speichert result: whenn won the round and the game
+    int mo = m.getMoney();
+    public void addMoney(){
+        if (result3==1){
+            mo=mo*2;
+        }
+        else{
+            mo=0;
+        }
+        bet.setText("You get " + mo + " Reals");
+    }
     //gemeinsamer Teil bei allen Buttons
     public int random1(){//Wuerfel von Spieler
         int r1=m.getRandom();
@@ -154,87 +144,98 @@ public class DiceController implements Initializable{//muss mit implements... we
         play3.setVisible(false);
 
         // mit setOnAction hier braucht 2 Click, braucht keine setOnAction
-       // play1.setOnAction((event1 -> {
+        // play1.setOnAction((event1 -> {
         int s=random1();
         int ws=random2();
-                if (s>ws) {
-                    result = 1;
-                    info.setText("You won this round. Next round.");
-                }
-                else if (s==ws) {
-                    result = 0;
-                    info.setText("Tie. Next round");
-                }
-                else {
-                    result = -1;
-                    info.setText("You lose this round. Next round");
-                }
-                play1.setVisible(false); //play1 invisible after click
-                play2.setVisible(true);
-       addScene();
-}
+        if (s>ws) {
+            result1 = 1;
+            info.setText("You won. Next round.");
+        }
+        else if (s==ws) {
+            result1 = 0;
+            info.setText("Tie. Next round");
+        }
+        else {
+            result1 = -1;
+            info.setText("You lose. Next round");
+        }
+        play1.setVisible(false); //play1 invisible after click
+        play2.setVisible(true);
+        addScene();
+    }
     @FXML
     private void handlePlay2(ActionEvent actionEvent) {
         int s = random1();
         int ws = random2();
-                play2.setVisible(false);
-                if (s > ws) {//gewinnt 2.Round
-                    result2 = 1;
-                    if (result == 1) {
-                        info.setText("You won this round and this game.");//play3 bleibt unsichtbar
-                       // v.play3.setDisable(true);
-                    }
-                    else if (result ==0||result==-1){
-                        info.setText("You won this round. Next round 3 will be decided.");
-                        play3.setVisible(true);
-                    }
-
-                } else if (s == ws) { //tie 2.Round
-                    result2=0;
-                    if (result == 0) {// result von 1.Round
-                        info.setText("Tie. Next round 3 will be decided");
-                        play3.setVisible(true);
-                    } else if (result == 1) {
-                        info.setText("This round is tie. But you won this game because you won the 1. round. No question. It's rule");
-                       // v.play3.setDisable(true);
-                    } else if (result == -1) {
-                        info.setText("This round is tie. But you lose this game because you lose 1. round. No question. It's rule");
-                        //v.play3.setDisable(true);
-                    }
-                } else if (s<ws) { //verliert 2. ROund
-                    result2 = -1;
-                    if (result == -1) {
-                        info.setText("You lose this round and this game");
-                    } else if (result ==0||result==1){
-                        info.setText("You lose this round. Next round 3 will be decided.");
-                        play3.setVisible(true);
-                    }
-                }
-        addScene();
+        play2.setVisible(false);
+        if (s > ws) {//gewinnt 2.Round
+            result2 = 1;
+            if (result1 == 1) {
+                info.setText("You won the game.");//play3 bleibt unsichtbar
+                result3=1;
+                addMoney();
+                // v.play3.setDisable(true);
             }
+            else if (result1 ==0||result1==-1){
+                info.setText("You won. Next round 3 will be decided.");
+                play3.setVisible(true);
+            }
+
+        } else if (s == ws) { //tie 2.Round
+            result2=0;
+            if (result1 == 0) {// result von 1.Round
+                info.setText("Tie. Next round 3 will be decided");
+                play3.setVisible(true);
+            } else if (result1 == 1) {
+                info.setText("Tie. But you won the game because you won the last round.");
+                result3=1;
+                addMoney();
+                // v.play3.setDisable(true);
+            } else if (result1 == -1) {
+                info.setText("Tie. But you lose the game because you lose the 1. round. No question. It's rule");
+                //v.play3.setDisable(true);
+                addMoney();
+            }
+        } else if (s<ws) { //verliert 2. ROund
+            result2 = -1;
+            if (result1 == -1) {
+                info.setText("You lose the game.");
+                addMoney();
+            } else if (result1 ==0||result1==1){
+                info.setText("You lose. Next round 3 will be decided.");
+                play3.setVisible(true);
+            }
+        }
+        addScene();
+    }
     @FXML
     private void handlePlay3(ActionEvent actionEvent) {
-         //aehnlich wie play1, gibt Zusammenhang mit play2
-                //play3.setDisable(true);//nach Click wird grau(disable)
+        //aehnlich wie play1, gibt Zusammenhang mit play2
+        //play3.setDisable(true);//nach Click wird grau(disable)
         int s = random1();
         int ws = random2();
-                play3.setVisible(false);
-                if (s>ws) { //gewinn 3.Round
-                    info.setText("You won this round and this game.");
-                }
-                else if (s==ws) {//tie 3. round
-                    if (result2 == 1) {
-                        info.setText("You won this round and this game.");
-                    } else if (result2 == -1) {
-                        info.setText("You lose this round and this game.");
-                    } else if (result2 == 0) {
-                        info.setText("Tie. Play again");
-                        play1.setVisible(true);
-                    }
-                } else {//verliert 3.round
-                        info.setText("You lose this round and this game.");
-                    }
-        addScene();
+        play3.setVisible(false);
+        if (s>ws) { //gewinn 3.Round
+            info.setText("You won.");
+            result3=1;
+        }
+        else if (s==ws) {//tie 3. round
+            if (result2 == 1) {
+                info.setText("You won.");
+                result3=1;
+            } else if (result2 == -1) {
+                info.setText("You lose.");
+            } else if (result2 == 0) {
+                info.setText("Tie. Play again");// muss noch ein Button oder nutzt play1 visible
+                play1.setVisible(true);
             }
+        } else {//verliert 3.round
+            info.setText("You lose.");
+        }
+        addScene();
+        addMoney();// kann fuer alle Faelle gelten
     }
+}
+
+
 
