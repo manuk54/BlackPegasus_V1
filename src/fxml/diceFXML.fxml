@@ -179,7 +179,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" text="Go to ..." />
+            <Button fx:id="go" mnemonicParsing="false" text="Go to ..." />
          </children>
       </HBox>
    </children>

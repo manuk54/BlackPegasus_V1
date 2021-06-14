@@ -12,62 +12,49 @@ import javafx.scene.layout.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DiceController implements Initializable{//muss mit implements... wenn css und public void ini..
-
+public class DiceController implements Initializable{
     private DiceAnimation a = new DiceAnimation();
+    private DiceModel m = new DiceModel();
+    //Würfel von dem Spieler
     @FXML
     private Label dice1;
     @FXML
     private Label dice2;
     @FXML
     private Label dice3;
-
+    //Ergebnisfeld von dem Spieler
     @FXML
     private Label sum;
-    // Wirt
+    // Würfel von dem Gastwirt
     @FXML
     private Label wdice1;
     @FXML
     private Label wdice2;
     @FXML
     private Label wdice3;
+    //Ergebnisfeld von dem Gastwirt
     @FXML
     private Label wsum;
 
-    //Info
+    //Anweisungsfeld
     @FXML
     private Label info;
-
+    //Buttons
     @FXML
     private Button play1;
     @FXML
     private Button play2 = new Button("Play Round 2");
-
     @FXML
     private Button play3 = new Button("Play Round 3");
-   /* @FXML
-    private Button wellcome = new Button("Wellcome to Game of Dice");  */
+
     @FXML
     private VBox vb = new VBox();
-    private DiceModel m = new DiceModel();//damit BlackModel hier benutzen koennen
-    //muss hier ein Objekt der Modellklasse als Instanzvariable erzeugt werden
+    @FXML
+    private HBox hb1;
+    @FXML
+    private HBox hb2;
 
-    //Bild als Hintergrund
-    final String imageName = "Schiff.png";
-
-    final String imagePath = "images/";
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image image = new Image(imagePath + imageName);
-        vb.setBackground(new Background(new BackgroundImage(
-            image,
-                                           BackgroundRepeat.NO_REPEAT,
-                                           BackgroundRepeat.NO_REPEAT,
-                                           BackgroundPosition.CENTER,
-                new BackgroundSize(vb.getWidth(),
-                vb.getHeight(), false, false, true, false)
-                        )));}
-
+    //alle Stackpane als Darstellung für Würfel und Ergebnisfelder
     @FXML
     private StackPane sp1;
     @FXML
@@ -84,25 +71,40 @@ public class DiceController implements Initializable{//muss mit implements... we
     private StackPane wsp3;
     @FXML
     private StackPane wsp4;
-    @FXML
-    private HBox hb1;
-    @FXML
-    private HBox hb2;
 
-    //Animation
+    //Bild als Hintergrund laden
+    final String imageName = "Schiff.png";
+    final String imagePath = "images/";
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image image = new Image(imagePath + imageName);
+        vb.setBackground(new Background(new BackgroundImage(
+            image,
+                                           BackgroundRepeat.NO_REPEAT,
+                                           BackgroundRepeat.NO_REPEAT,
+                                           BackgroundPosition.CENTER,
+                new BackgroundSize(vb.getWidth(),
+                vb.getHeight(), false, false, true, false)
+                        )));}
+
+
+
+
+    //Animationen zu Hbox einbinden
     public void addScene(){
 
-        hb1.getChildren().addAll(a.rotatedDice(sp1,300,100),a.rotatedDice(sp2,300,-50),a.rotatedDice(sp3,-300,200),a.createDice(sp4,0,0));//unterschiedlich y damit die chaos in allen Richtungen
+        hb1.getChildren().addAll(a.rotatedDice(sp1,300,100),a.rotatedDice(sp2,300,-50),a.rotatedDice(sp3,-300,200),a.result(sp4,0,0));
 
-        hb2.getChildren().addAll(a.rotatedDice(wsp1,300,50),a.rotatedDice(wsp2,300,-150),a.rotatedDice(wsp3,-300,-200),a.createDice(wsp4,0,0));
+        hb2.getChildren().addAll(a.rotatedDice(wsp1,300,50),a.rotatedDice(wsp2,300,-150),a.rotatedDice(wsp3,-300,-200),a.result(wsp4,0,0));
     }
-
+    //Label für Wetten
     @FXML
     private Label bet;
-    //Button Action
-    int result1;//speichert result von play 1, hat 3 Werte
-    int result2;//speichert result von play 2 fuer action play 3
-    int result3;//speichert result: whenn won the round and the game
+    //Button zu nächstem Level
+    @FXML
+    private Button go;
+
+    //Wetten
     int mo = m.getMoney();
     public void addMoney(){
         if (result3==1){
@@ -113,8 +115,14 @@ public class DiceController implements Initializable{//muss mit implements... we
         }
         bet.setText("You get " + mo + " Reals");
     }
+
+    //Button Action
+    int result1;//speichert Ergebnis von 1. Runde
+    int result2;//speichert Ergebnis von 2. Runde
+    int result3;//speichert Ergebnis: gewinnt die Runde und das Spiel
     //gemeinsamer Teil bei allen Buttons
-    public int random1(){//Wuerfel von Spieler
+    //Spieler: Zufallszahle generieren und mit Label anbinden
+    public int random1(){
         int r1=m.getRandom();
         int r2=m.getRandom();
         int r3=m.getRandom();
@@ -125,6 +133,7 @@ public class DiceController implements Initializable{//muss mit implements... we
         sum.setText("Your score"+"\n"+ +s);// set alignment center in Scene builder
         return s;
     }
+    //Gastwirt: Zufallszahle generieren und mit Label anbinden
     public int random2(){ //Wuerfel von Computer
         int wr1=m.getRandom();
         int wr2=m.getRandom();
@@ -136,15 +145,14 @@ public class DiceController implements Initializable{//muss mit implements... we
         wsum.setText("My score"+"\n"+ ws);
         return ws;
     }
-
+    //Button Action für 1. Runde
     @FXML
     private void handlePlay1(ActionEvent event) {
-        play1.setVisible(false);  //play2 und 3 muessen unsichtbar am Anfang, wie?
+        //Button verstecken
+        play1.setVisible(false);
         play2.setVisible(false);
         play3.setVisible(false);
-
-        // mit setOnAction hier braucht 2 Click, braucht keine setOnAction
-        // play1.setOnAction((event1 -> {
+        //Summen berechnen und vergleichen
         int s=random1();
         int ws=random2();
         if (s>ws) {
@@ -159,44 +167,42 @@ public class DiceController implements Initializable{//muss mit implements... we
             result1 = -1;
             info.setText("You lose. Next round");
         }
-        play1.setVisible(false); //play1 invisible after click
+        play1.setVisible(false);
         play2.setVisible(true);
         addScene();
     }
+    //Button Action für 2. Runde
     @FXML
     private void handlePlay2(ActionEvent actionEvent) {
         int s = random1();
         int ws = random2();
         play2.setVisible(false);
-        if (s > ws) {//gewinnt 2.Round
+        if (s > ws) {
             result2 = 1;
             if (result1 == 1) {
-                info.setText("You won the game.");//play3 bleibt unsichtbar
+                info.setText("You won the game.");
                 result3=1;
                 addMoney();
-                // v.play3.setDisable(true);
             }
             else if (result1 ==0||result1==-1){
                 info.setText("You won. Next round 3 will be decided.");
                 play3.setVisible(true);
             }
 
-        } else if (s == ws) { //tie 2.Round
+        } else if (s == ws) {
             result2=0;
-            if (result1 == 0) {// result von 1.Round
+            if (result1 == 0) {
                 info.setText("Tie. Next round 3 will be decided");
                 play3.setVisible(true);
             } else if (result1 == 1) {
                 info.setText("Tie. But you won the game because you won the last round.");
                 result3=1;
                 addMoney();
-                // v.play3.setDisable(true);
             } else if (result1 == -1) {
                 info.setText("Tie. But you lose the game because you lose the 1. round. No question. It's rule");
-                //v.play3.setDisable(true);
                 addMoney();
             }
-        } else if (s<ws) { //verliert 2. ROund
+        } else if (s<ws) {
             result2 = -1;
             if (result1 == -1) {
                 info.setText("You lose the game.");
@@ -208,32 +214,31 @@ public class DiceController implements Initializable{//muss mit implements... we
         }
         addScene();
     }
+    //Button Action für 3. Runde
     @FXML
     private void handlePlay3(ActionEvent actionEvent) {
-        //aehnlich wie play1, gibt Zusammenhang mit play2
-        //play3.setDisable(true);//nach Click wird grau(disable)
         int s = random1();
         int ws = random2();
         play3.setVisible(false);
-        if (s>ws) { //gewinn 3.Round
+        if (s>ws) {
             info.setText("You won.");
             result3=1;
         }
-        else if (s==ws) {//tie 3. round
+        else if (s==ws) {
             if (result2 == 1) {
                 info.setText("You won.");
                 result3=1;
             } else if (result2 == -1) {
                 info.setText("You lose.");
             } else if (result2 == 0) {
-                info.setText("Tie. Play again");// muss noch ein Button oder nutzt play1 visible
+                info.setText("Tie. Play again");
                 play1.setVisible(true);
             }
-        } else {//verliert 3.round
+        } else {
             info.setText("You lose.");
         }
         addScene();
-        addMoney();// kann fuer alle Faelle gelten
+        addMoney();
     }
 }
 
