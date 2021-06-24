@@ -37,8 +37,8 @@ public class Ch5 {
     @FXML
     public void handleChoice0ButtonAction(ActionEvent actionEvent){
         choice0NumPressed ++;
-        //end
-        textNum = choice0NumPressed + choice1NumPressed + 1;
+        if(choice1NumPressed == 0) textNum = 1;
+        else textNum = 3;
         speechNum = 1;
         introTextLabel.setText(textToShow[textNum][0]);
         enableAllButtons(false);
@@ -49,7 +49,7 @@ public class Ch5 {
     public void handleChoice1ButtonAction(ActionEvent actionEvent){
         choice1NumPressed++;
         enableAllButtons(false);
-        textNum = choice0NumPressed + choice1NumPressed + 1;
+        textNum = choice1NumPressed * 2;
         speechNum = 1;
         introTextLabel.setText(textToShow[textNum][0]);
         if (choice1NumPressed == 1){
@@ -97,11 +97,11 @@ public class Ch5 {
                 turnAllButtons(true);
             } else if (textNum == 1 ) {
                 //handleBackButton();
-                introTextLabel.setText("THE END!");
+//                introTextLabel.setText("THE END!");
             } else if(textNum == 2) {
                 enableAllButtons(true);
             } else if(textNum == 3){
-                introTextLabel.setText("THE END!");
+//                introTextLabel.setText("THE END!");
             }
         }
     }

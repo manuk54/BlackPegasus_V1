@@ -1,6 +1,9 @@
-package classes;
+package classes.DiceGAME;
+
+import classes.Model;
 
 public class DiceModel {
+    private Model model;
     private int r;
     private int s;
     private int[] arr = new int[3];
@@ -19,5 +22,8 @@ public class DiceModel {
     public int getMoney() {
         int m = 50;// wo findet diesen Wert?
         return m;
+    }
+    public void setModel(Model m){
+        this.model = m;
     }
 }

@@ -14,7 +14,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                     <children>
-                        <Label fx:id="introTextLabel" text="Chapter 5. Final decisions" wrapText="true">
+                        <Label fx:id="introTextLabel" text="Chapter 5. Final decisions" textAlignment="CENTER" wrapText="true">
                             <HBox.margin>
                                 <Insets bottom="5.0" right="5.0" />
                             </HBox.margin>
@@ -32,7 +32,7 @@
                         <Insets left="15.0" right="15.0" />
                     </padding>
                     <children>
-                        <Button fx:id="choice0" alignment="CENTER" mnemonicParsing="false" onAction="#handleChoice0ButtonAction" prefHeight="26.0" prefWidth="200.0" text="Away from these islands" textAlignment="CENTER" visible="false" wrapText="true">
+                        <Button fx:id="choice0" alignment="CENTER" mnemonicParsing="false" onAction="#handleChoice0ButtonAction" text="Away from these islands" textAlignment="CENTER" visible="false" wrapText="true">
                             <HBox.margin>
                                 <Insets right="30.0" />
                             </HBox.margin>
@@ -40,7 +40,7 @@
                                 <Font name="Bell MT" size="20.0" />
                             </font>
                         </Button>
-                        <Button fx:id="choice1" alignment="CENTER" mnemonicParsing="false" onAction="#handleChoice1ButtonAction" prefHeight="26.0" prefWidth="200.0" text="To &quot;the jaws&quot;i" visible="false">
+                        <Button fx:id="choice1" alignment="CENTER" mnemonicParsing="false" onAction="#handleChoice1ButtonAction" text="To &quot;the jaws&quot;" visible="false" wrapText="true">
                             <HBox.margin>
                                 <Insets left="30.0" />
                             </HBox.margin>

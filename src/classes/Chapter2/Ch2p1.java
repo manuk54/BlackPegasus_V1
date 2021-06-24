@@ -1,7 +1,7 @@
 package classes.Chapter2;
 
 import classes.Chapter3.Ch3;
-import classes.DiceController;
+import classes.DiceGAME.DiceController;
 import classes.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,8 +54,9 @@ public class Ch2p1 {
         speechNum = 1;
         introTextLabel.setText(model.getTextCh2p1()[textNum][0]);
         enableAllButtons(false);
-        Button drink = new Button("Yes, please");
+        Button drink = new Button("Yes, please (5 " + model.getCurrency() + ")");
         drink.setOnAction(actionEvent1 -> {
+            model.changeMyMoney(-5); //paid 5
             waitForButtonPressed = false;
             enableAllButtons(false);
             showText();
@@ -89,24 +90,36 @@ public class Ch2p1 {
         introTextLabel.setText(model.getTextCh2p1()[textNum][0]);
         enableAllButtons(false);
 
+        //define 4 buttons with bets
         Button leave = new Button("No, thanks. ");
         leave.setOnAction(actionEvent1 -> {handleBackButton();});
         leave.setOnAction(actionEvent1 -> {
             handleBackButton();
         });
-
         Button bet25 = new Button("Yes. (Bet 25 Reals)");
         bet25.setOnAction(actionEvent1 -> {
             try {
-                loadDice();
+                loadDice(25);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-        //TODO definde bets in Dice
         Button bet50 = new Button("Yes. (Bet 50 Reals)");
+        bet50.setOnAction(actionEvent1 -> {
+            try {
+                loadDice(50);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         Button betAll = new Button("Yes. (All in)");
-
+        betAll.setOnAction(actionEvent1 -> {
+            try {
+                loadDice(model.getMyMoney());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         lowerHBox1.getChildren().addAll(leave,bet25);
         lowerHBox2.getChildren().addAll(bet50,betAll);
     }
@@ -122,27 +135,27 @@ public class Ch2p1 {
         });
         Button moveToTheNextChapter = new Button("Next chapter");
         moveToTheNextChapter.setOnAction(actionEvent1 -> {
-            //TODO
-            //load next scene Ch3
             try {
                 loadCh3();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
         lowerHBox1.getChildren().addAll(goBack,moveToTheNextChapter);
     }
 
 
 
 
-    private void loadDice() throws IOException {
+    private void loadDice(int bet) throws IOException {
         //load Dice
         FXMLLoader diceLoader = new FXMLLoader(getClass().getResource("/fxml/diceFXML.fxml"));
         Parent diceView = diceLoader.load();
         Scene diceScene = new Scene(diceView, model.getWindowWidth(), model.getWindowHeight());
         DiceController diceController = (DiceController) diceLoader.getController();
+        diceController.setModelAndBet(model,bet);
+        diceController.setScene(diceScene);
+        diceController.setStage(stage);
         stage.setScene(diceScene);
     }
 
@@ -180,7 +193,8 @@ public class Ch2p1 {
     }
 
     //opens default tavern moment with 4 choices
-    private void handleBackButton(){
+    public void handleBackButton(){
+        introTextLabel.setFont(model.getDefaultFont());
         introTextLabel.setText("You are at the tavern...");
         enableAllButtons(false);
         enableAllButtons(true);

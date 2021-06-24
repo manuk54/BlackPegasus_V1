@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="vb" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1000.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.DiceController">
+<VBox fx:id="vb" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1000.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.DiceGAME.DiceController">
    <children>
       <HBox fx:id="hb1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -58,7 +59,7 @@
                         <InnerShadow />
                      </effect>
                   </Rectangle>
-                  <Label fx:id="sum" text="Your score" textAlignment="CENTER" textFill="#6bcc04">
+                  <Label fx:id="sum" text="ME" textAlignment="CENTER" textFill="#6bcc04">
                      <font>
                         <Font name="Luminari" size="14.0" />
                      </font>
@@ -81,22 +82,42 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="play2" mnemonicParsing="false" onAction="#handlePlay2" text="Play round 2">
-         <font>
-            <Font name="Luminari" size="18.0" />
-         </font>
-         <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect>
-      </Button>
-      <Button fx:id="play3" mnemonicParsing="false" onAction="#handlePlay3" text="Play round 3">
+      <HBox alignment="CENTER" fillHeight="false" prefHeight="81.0" prefWidth="895.0" spacing="170.0">
+         <children>
+            <Label fx:id="betLabel" text="You bet  reals" textFill="#f6f6f8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="play2" mnemonicParsing="false" onAction="#handlePlay2" text="Play round 2" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font name="Luminari" size="18.0" />
+               </font>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Button>
+            <Label fx:id="balanceLabel" text="                     " textFill="#f6f6f8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <Button fx:id="play3" mnemonicParsing="false" onAction="#handlePlay3" text="Play round 3" visible="false">
          <font>
             <Font name="Luminari" size="18.0" />
          </font>
@@ -159,7 +180,7 @@
                         <InnerShadow />
                      </effect>
                   </Rectangle>
-                  <Label fx:id="wsum" text="My score" textAlignment="CENTER">
+                  <Label fx:id="wsum" text="OPPONENT" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="JetBrains Mono ExtraBold Italic" size="14.0" />
                      </font>
@@ -174,12 +195,10 @@
          </font></Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
          <children>
-            <Label fx:id="bet" text="You bet 50 reals" textFill="#f6f6f8">
+            <Button fx:id="go" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" visible="false">
                <font>
                   <Font size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="go" mnemonicParsing="false" text="Go to ..." />
+               </font></Button>
          </children>
       </HBox>
    </children>

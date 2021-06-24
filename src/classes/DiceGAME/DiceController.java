@@ -1,20 +1,33 @@
-package classes;
+package classes.DiceGAME;
 
+import classes.Chapter2.Ch2p1;
+import classes.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DiceController implements Initializable{
+    private Model model;
+    private Stage stage = null;
+    private Scene scene = null;
+
     private DiceAnimation a = new DiceAnimation();
     private DiceModel m = new DiceModel();
+
+    private int bet = 0;
     //Würfel von dem Spieler
     @FXML
     private Label dice1;
@@ -85,9 +98,23 @@ public class DiceController implements Initializable{
                                            BackgroundPosition.CENTER,
                 new BackgroundSize(vb.getWidth(),
                 vb.getHeight(), false, false, true, false)
-                        )));}
+                        ))
+        );
+    }
 
+    @FXML
+    public void handleQuitButtonAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader ch2p1Loader = new FXMLLoader(getClass().getResource("/fxml/Ch2p1.fxml"));
+        Parent ch2p1View = ch2p1Loader.load();
+        Scene ch2p1Scene = new Scene(ch2p1View,model.getWindowWidth(),model.getWindowHeight());
 
+        Ch2p1 chap2p1Controller = (Ch2p1) ch2p1Loader.getController();
+        chap2p1Controller.setCurrentScene(ch2p1Scene);
+        chap2p1Controller.setStage(stage);
+        chap2p1Controller.setModel(model);
+        chap2p1Controller.handleBackButton();
+        stage.setScene(ch2p1Scene);
+    }
 
 
     //Animationen zu Hbox einbinden
@@ -99,21 +126,36 @@ public class DiceController implements Initializable{
     }
     //Label für Wetten
     @FXML
-    private Label bet;
+    private Label betLabel;
     //Button zu nächstem Level
     @FXML
     private Button go;
 
     //Wetten
-    int mo = m.getMoney();
     public void addMoney(){
+        System.out.println("my: " + model.getMyMoney());
+        String result = " won ";
         if (result3==1){
-            mo=mo*2;
+            model.changeMyMoney(bet);
         }
         else{
-            mo=0;
+            model.changeMyMoney(-bet);
+            result = " lost ";
         }
-        bet.setText("You get " + mo + " Reals");
+        go.setVisible(true);
+        betLabel.setText("You"+ result + bet + model.getCurrency());
+        balanceLabel.setText("Balance: " + model.getMyMoney() + model.getCurrency());
+    }
+
+    @FXML
+    private Label balanceLabel;
+
+    public void setModelAndBet(Model mod,int b){
+        this.model = mod;
+        m.setModel(mod);
+        bet = b;
+        betLabel.setText("Your bet: " + bet + model.getCurrency());
+        balanceLabel.setText("Balance: " + model.getMyMoney() + model.getCurrency());
     }
 
     //Button Action
@@ -130,7 +172,7 @@ public class DiceController implements Initializable{
         dice2.setText(""+r2);
         dice3.setText(""+r3);
         int s = m.getSum(r1,r2,r3);
-        sum.setText("Your score"+"\n"+ +s);// set alignment center in Scene builder
+        sum.setText("ME"+"\n"+ +s);// set alignment center in Scene builder
         return s;
     }
     //Gastwirt: Zufallszahle generieren und mit Label anbinden
@@ -142,7 +184,7 @@ public class DiceController implements Initializable{
         wdice2.setText(""+wr2);
         wdice3.setText(""+wr3);
         int ws = m.getSum(wr1,wr2,wr3);
-        wsum.setText("My score"+"\n"+ ws);
+        wsum.setText("OPPONENT"+"\n"+ ws);
         return ws;
     }
     //Button Action für 1. Runde
@@ -240,6 +282,9 @@ public class DiceController implements Initializable{
         addScene();
         addMoney();
     }
+
+    public void setStage(Stage st){stage=st;}
+    public void setScene(Scene sc){scene=sc;}
 }
 
 

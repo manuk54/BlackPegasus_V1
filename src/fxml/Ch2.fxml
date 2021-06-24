@@ -14,7 +14,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                     <children>
-                        <Label fx:id="introTextLabel" text="Chapter 2 On the shore" wrapText="true">
+                        <Label fx:id="introTextLabel" text="Chapter 2 On the shore" textAlignment="CENTER" wrapText="true">
                             <HBox.margin>
                                 <Insets bottom="5.0" right="5.0" />
                             </HBox.margin>

@@ -1,13 +1,20 @@
 package classes.Chapter3;
 
 import classes.Model;
+import classes.ShipGAME.ShipController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Ch3 {
     private Stage stage  = null;
@@ -18,6 +25,7 @@ public class Ch3 {
     //model.getTextCh3[textNum][speechNum]
     private int textNum = 0;
     private int speechNum = 0;
+    private int keyPressedNum = 0;
     private int choice1NumPressed = 0;
 
     boolean waitForButtonPressed = false;
@@ -41,7 +49,7 @@ public class Ch3 {
         model.setRiotWilliam(1);
         enableAllButtons(false);
        // handleBackButton();
-        //TODO move to the next scene
+//        loadShipGame();
     }
 
     @FXML
@@ -51,11 +59,9 @@ public class Ch3 {
         textNum = choice1NumPressed + 1;
         speechNum = 1;
         introTextLabel.setText(textToShow[textNum][0]);
-
-
     }
 
-    //used for 4 default choice buttons
+    // show or hide buttons
     //true -> turn on   false -> turn off
     private void turnAllButtons(boolean bool){
         if(bool){
@@ -87,22 +93,59 @@ public class Ch3 {
                 introTextLabel.setText(textToShow[textNum][speechNum]);
                 speechNum++;
             } else if (textNum == 0) {
-                turnAllButtons(true);
-            } else if (textNum == 1 ) {
-                //handleBackButton();
+                enableAllButtons(true);
+            } else if (textNum == 1 || textNum == 3) {
+                try {
+                    loadShipGame();
+                }catch (IOException e){e.printStackTrace();}
             } else if(textNum == 2) {
                 enableAllButtons(true);
                 choice1.setText("Agree to him");
-            } else if(textNum == 3){
-                //TODO load ship minigame
             }
         }
+    }
+
+    //creates a txtfield to give a name for the ship
+    private void nameTheShip(){
+        enableAllButtons(false);
+        //Label TextField Label
+        Label callShipLabel = new Label("Enter a name for your ship: ");
+        TextField enterName = new TextField();
+        Label adviceForNameLabel = new Label("");
+        lowerHBox.getChildren().addAll(callShipLabel,enterName,adviceForNameLabel);
+        enterName.setOnAction(actionEvent -> {
+            String name = enterName.getText().toString();
+            if(model.stringHasOnlyLetters(name)){
+                model.setShipName(name);
+                introTextLabel.setText(textToShow[textNum][speechNum]);
+                speechNum++;
+                enableAllButtons(false);
+            }else{
+                adviceForNameLabel.setText("!Please use only latin letters!");
+                adviceForNameLabel.setTextFill(Color.color(1, 0, 0));
+            }
+        });
+    }
+
+    private void loadShipGame() throws IOException {
+        //TODO
+        FXMLLoader shipLoader = new FXMLLoader(getClass().getResource("/fxml/Ship.fxml"));
+        Parent shipParent = shipLoader.load();
+        Scene shipScene = new Scene(shipParent, model.getWindowWidth(),model.getWindowHeight());
+        ShipController shipController = (ShipController) shipLoader.getController();
+        shipController.setCurrentScene(shipScene);
+        shipController.setCurrentStage(stage);
+        shipController.setModel(model);
+        stage.setScene(shipScene);
     }
 
     public void setCurrentScene(Scene sc){
         this.currentScene = sc;
         currentScene.setOnKeyPressed(keyEvent -> {
-            showText();
+            keyPressedNum++;
+            System.out.println("keyPressedNum: "+keyPressedNum);
+            if (keyPressedNum == 2) nameTheShip();
+            else showText();
         });
     }
 

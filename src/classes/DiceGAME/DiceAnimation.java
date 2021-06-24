@@ -1,4 +1,4 @@
-package classes;
+package classes.DiceGAME;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;

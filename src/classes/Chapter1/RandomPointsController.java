@@ -38,7 +38,7 @@ public class RandomPointsController {
     private double reloadTime = 1000; // ms time for weapon to reload
     private int score = 0;
     private int intermediateScore = 12; // points to pass half of the level (side level)
-    private int scoreToWin = 20; //How many points to pass the lvl
+    private int scoreToWin = 5; //How many points to pass the lvl
     private long lastShotTime;  //time when last shot was shoot
 
 
@@ -76,9 +76,9 @@ public class RandomPointsController {
             if(score < scoreToWin-1){
                 lastShotTime = System.currentTimeMillis();
                 score++;
-                if(score >= 10) motivation.setText("C`mon half of them is down!");
-                if(score >= 15) motivation.setText("Last push!");
-                if(score == 19) motivation.setText("Last one!");
+                if(score >= scoreToWin/2 && scoreToWin % 2 == 0) motivation.setText("C`mon half of them is down!");
+                if(score >= scoreToWin * 0.75) motivation.setText("Last push!");
+                if(score == scoreToWin - 1) motivation.setText("Last one!");
                 updateScoreLabel();
                 clearPane();
                 System.out.println("target down");
@@ -181,21 +181,3 @@ public class RandomPointsController {
         this.model = model;
     }
 }
-
-
-//Here old and unused code
-/*
-
-private boolean targetDown = false;
-    private boolean firstClick = false;
-
-if(firstClick){
-        startCircle.setTranslateX(Math.random()*(300-100)+50);
-        startCircle.setTranslateY(Math.random()*(300-100)+50);
-        scoreLabel.setText("Ahoi " + model.getNickname() + "! Let`s get the job done! U need to shoot at list 10 goddamn bubbles. Fire in the hole!");
-        firstClick = false;
-        }
-        else{
-
-
- */

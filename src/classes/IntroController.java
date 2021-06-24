@@ -77,7 +77,7 @@ public class IntroController {
         lowerHBox.getChildren().add(adviceForNickname);
         playersName.setOnAction(actionEvent -> {
             nickname = playersName.getText().toString(); //
-            model.setNickname(nickname);
+//            model.setNickname(nickname);
             if(nicknameHasOnlyLetters()){
                 showGreetings();
                 model.setIntroFinished(true);
