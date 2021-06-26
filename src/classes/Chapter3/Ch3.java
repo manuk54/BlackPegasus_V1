@@ -48,8 +48,6 @@ public class Ch3 {
         introTextLabel.setText(textToShow[textNum][0]);
         model.setRiotWilliam(1);
         enableAllButtons(false);
-       // handleBackButton();
-//        loadShipGame();
     }
 
     @FXML

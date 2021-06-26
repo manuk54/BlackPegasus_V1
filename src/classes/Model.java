@@ -23,20 +23,20 @@ public class Model {
 
     private String[] textCh1 = {"Chapter 1. The Prison","You wake up in a cell, captain. Of course, you don't remember what the hell happened yesterday, but the yellow cloth of the officers tells you that you are enprisoned by the Spanish fleet.",
             "You are in one of their fortifications in the Caribbean. God knows which of them...\n",
-            "Trying to steady up your thoughts, you sit down and see that you're not alone in here. A dark sillhouette in the shades looks up at you from the corner of the room. It doesn't look like a human being until it stands up and walks towards you.\n",
+            "Trying to steady up your thoughts, you sit down and see that you're not alone in here. A dark silhouette in the shades looks up at you from the corner of the room. It doesn't look like a human being until it stands up and walks towards you.\n",
             "- Hello, sir. I've heard much about you. And I've heard that you don't have a ship anymore.",
-                    "The sillhouette proves to be a huge man with scars and tattooes of different sea beasts.",
+                    "The silhouette proves to be a huge man with scars and tattoos of different sea beasts.",
                     "- I know how to help you out of this situation. I planned the escape out of this place and a few sailors of yours agreed overnight. I only want to be your right hand on your future new ship.",
                     "Without saying a word, you give your new acquaintance a sign of agreement. However, you can't talk any longer, because another Spanish soldier came to you.",
             "As soon as you recover totally, your cellmate tells you what was on his mind. His plan is almost ready. He only needed a skillful captain to lead him and some more prisoners out of this hell.",
                     "In a few days you get to know everyone who takes part in the escape plan. They seem to trust you more than William, your cellmate. That might be what he was talking about.",
-                    "In a few more nights, everything is ready for your escape. A riot at midnight gets the guards lost and you easily have your way to the small harboir at the fortress. The only way out is to take a ship and move away with all sails up.",
+                    "In a few more nights, everything is ready for your escape. A riot at midnight gets the guards lost and you easily have your way to the small harbour at the fortress. The only way out is to take a ship and move away with all sails up.",
     "As soon as you get aboard, you have to take a riffle and shoot back to protect your people from enemy fire. Spanish soldiers are shooting at you, trying to weaken you as much as they can. Kill as many as you can in order to escape." +
             "1) If less than 10 killed: You succeed in escaping but you can't go much too far. Another ship intercepts you and you cannot escape this time (GAME OVER).\n" +
             "2) If 10 to 19 killed: You succeed in escaping. Your crew is enough to maneuver and avoid enemy ships in the harbour or fight them back if necessary. But you will need to stop by a city to gather new sailors.\n" +
             "3) If more than 20 killed: You escape successfully. The ship has enough supplies for a whole month in open sea. You have just enough people to stand and face any problem and take any ship you meet in the Caribbean "};
 
-    String[] textCh2 = {"Having torn off the flag of the Spanish empire, you arrive at an English city in order to gather some new crewmen in your team. Using all of the gold you got on your ship from her previous owners, you fullfill her needs by fortifying the body and gathering more skilled sailors, who though can't be trusted yet.\n",
+    String[] textCh2 = {"Having torn off the flag of the Spanish empire, you arrive at an English city in order to gather some new crewmen in your team. Using all of the gold you got on your ship from her previous owners, you fulfill her needs by fortifying the body and gathering more skilled sailors, who though can't be trusted yet.\n",
             "After a day full of productive work, if you can say so, you are left in the middle of a small town under the light of the moon. There is only William besides you.\n",
             "- You are a good ol' dog, pal. I think I trust you enough to tell you a secret of mine.",
             "- What secret? - you ask.",
@@ -44,14 +44,14 @@ public class Model {
 
     String[] choiceCh2 = {"Go to tavern","Return to the ship and sleep"};
 
-    String[] textCh2p1Intro = {"Entering the building you watch the things happening inside. A bunch of black musicians singing some hasty shuntee songs, a beautiful ample woman standing at the bar stand, tempting you to come get a drink and have a talk with her. In a corner there is an old man without a leg telling stories to a bunch of drunk people who gathered around him. In another part of the room you see a few people trying their luck with the dice. You check through your pockets. You have 100 Reals.\n"};
+    String[] textCh2p1Intro = {"Entering the building you watch the things happening inside. A bunch of black musicians singing some hasty shunted songs, a beautiful ample woman standing at the bar stand, tempting you to come get a drink and have a talk with her. In a corner there is an old man without a leg telling stories to a bunch of drunk people who gathered around him. In another part of the room you see a few people trying their luck with the dice. You check through your pockets. You have 100 Reals.\n"};
 
     String[] textBarmaid = {"- Hello, sweetheart. - says the woman as you approach her. - Want a drink?","You start drinking and listen to what people near you talk. Suddenly you ask the barmaid about the nearby islands.",
     "- Ha. - she smirks looking at you, but doesn't refuse you. - We are on a group of five small nameless islands. The biggest of them is located in the middle. We call it the \"open jaws\", because it looks like that. It is said to be haunted by the Black Pegasus. But I don't actually believe that, if you ask me.",
             "The smallest island is between the jaws to the east. An absolutely empty narrow line of sand. It only makes it difficult to stop in the bay.",
             "Our island is already known to you. North-east from the jaws. The only one where you can have fun. With me, for example. - she winks at you.",
-            "And of course you have already heard of the Spanish fortress on the island to the west from here. I don't really know, what exactly they are looking for here. There are no aborigenes around. We are the only people living on the islands",
-            "The last island is an empty spot to the south. May be an oasis, may be a prison. A lot of palmtrees, no animals besides seagulls. A mean place.",
+            "And of course you have already heard of the Spanish fortress on the island to the west from here. I don't really know, what exactly they are looking for here. There are no aborigines around. We are the only people living on the islands",
+            "The last island is an empty spot to the south. May be an oasis, may be a prison. A lot of palm trees, no animals besides seagulls. A mean place.",
             "Well, captain, now you know more about where you are.\n" +
                     "\n" +
                     "*after a few more minutes of talking with the barmaid, you leave her alone*\n"};
@@ -67,20 +67,20 @@ public class Model {
     String[] textCh3Intro = {"Off shore again. You are behind the man at the steering of the ship. She does not have a name for you yet, but it has a Spanish name you cannot even pronounce.","You see William approaching you. Again.",
             "- Hey, cap! - he says loudly, just so you can hear him above the sounds of the sea and the ship. - Remember wha'I told ya yesterday? Let's get aside.",
             "You agree, going with him to the borders of the upper deck. He stands very close to you, and you can see how serious he has got in just a moment. You notice the same lightening in his eyes as at the moment he was explaining the escape plan to you in the Spanish fortress.",
-    "- You probably have already heard about the curse and the chest of the Black Pegasus. Well, I know its place. In one of two big caves on the highest peak of \"the jaws\". I can bring you there, if you make me your quartermeister"};
+    "- You probably have already heard about the curse and the chest of the Black Pegasus. Well, I know its place. In one of two big caves on the highest peak of \"the jaws\". I can bring you there, if you make me your quartermaster"};
 
     String[] textCh3p1 = {"- I don't think I want you by my side. - you cut him off shortly, stinging with each word. - Encarcer him! - you yell at the sailors",
     "A few men, who did a less important job on the deck in your neighbourhood, came by swiftly and took William by the arms, wordlessly getting him to the orlop, under the deck."};
     String[] textCh3p2={"You don't answer, but your face changes into one of careful interest and attention. He notices that.",
     "- Well, yes, captain. I agree that you can want more details before taking such an important decision.",
-            "The caves have beautiful sculpted archs at the entrance. Each with a symbol. You shall choose the one that the Black Pegasus wore on the sails.",
+            "The caves have beautiful sculpted arches at the entrance. Each with a symbol. You shall choose the one that the Black Pegasus wore on the sails.",
             "- What symbol was it? Do you know it? - you ask.\n" +
                     "\n" +
-                    "- Make me your quartermeister, cap. Then we'll be talking. I will show it to you as soon as we arrive. - he lend his hand to you for a handshake.\n"};
+                    "- Make me your quartermaster, cap. Then we'll be talking. I will show it to you as soon as we arrive. - he lend his hand to you for a handshake.\n"};
 
-    String[] textCh3p2p2 = {"You shake hands with your new quartermeister. From now on every command of yours is always repeated by him, so you don't need to yell at the team. Because he will do it."};
+    String[] textCh3p2p2 = {"You shake hands with your new quartermaster. From now on every command of yours is always repeated by him, so you don't need to yell at the team. Because he will do it."};
 
-    String[] textCh4Intro = {"The concequences of the storm force you to stop at the shore again. As you remember from what the barmaid told you yesterday, this island is absolutely empty. No people, no animals. A perfect oasis, or a prison...",
+    String[] textCh4Intro = {"The consequences of the storm force you to stop at the shore again. As you remember from what the barmaid told you yesterday, this island is absolutely empty. No people, no animals. A perfect oasis, or a prison...",
             "Fortunately, you can repair your ship enough to go on sailing by your own sailors' forces. Meanwhile, you can relax and do something useful, to catch some fish for yourself and for your team. So that your cooks can prepare a fresh dinner, an exception to what was a rule."};
     String[] textCh4p1 = {"At some moment you are circled by your crew. Ahead of them - William. He smiles. No words sound around. Everyone just realizes what is happening and what is his job in the situation. You left your weapons on the ship, so you stand between all of them defenseless",
             "They tie you up. Nobody says a word. Even you. You simply understand. No need to ask anything. No need to tell anything.",
