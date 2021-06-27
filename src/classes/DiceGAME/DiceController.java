@@ -286,6 +286,3 @@ public class DiceController implements Initializable{
     public void setStage(Stage st){stage=st;}
     public void setScene(Scene sc){scene=sc;}
 }
-
-
-

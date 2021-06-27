@@ -42,7 +42,6 @@ public class Ch5 {
         speechNum = 1;
         introTextLabel.setText(textToShow[textNum][0]);
         enableAllButtons(false);
-
     }
 
     @FXML
@@ -59,7 +58,6 @@ public class Ch5 {
         if(choice1NumPressed == 2 && choice0NumPressed == 0){
             textNum = 4;
         }
-
     }
 
     //used for 4 default choice buttons
@@ -95,13 +93,10 @@ public class Ch5 {
                 speechNum++;
             } else if (textNum == 0) {
                 turnAllButtons(true);
-            } else if (textNum == 1 ) {
-                //handleBackButton();
-//                introTextLabel.setText("THE END!");
+            } else if (textNum == 1 || textNum == 3) {
+                introTextLabel.setText("THE END!");
             } else if(textNum == 2) {
                 enableAllButtons(true);
-            } else if(textNum == 3){
-//                introTextLabel.setText("THE END!");
             }
         }
     }

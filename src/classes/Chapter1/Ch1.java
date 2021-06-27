@@ -10,9 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class Ch1 {
 

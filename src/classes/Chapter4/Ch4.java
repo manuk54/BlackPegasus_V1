@@ -2,17 +2,13 @@ package classes.Chapter4;
 
 import classes.Chapter5.Ch5;
 import classes.Model;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 
 public class Ch4 {
@@ -36,7 +32,6 @@ public class Ch4 {
             textLabel.setText(textToShow[textNum][speechNum]);
             speechNum++;
         } else if(textNum == 0){
-//            loadFishing();
             speechNum = 0;
             if(model.getRiotWilliam() == 1) textNum = 1;     //riotCrew TODO
             else textNum = 4;
@@ -58,14 +53,6 @@ public class Ch4 {
                 e.printStackTrace();
             }
         }
-    }
-
-    private void loadFishing() {
-//        //TODO Load Fishing Game
-//        //the following code will be used in fishing to load the next Scene
-//        if(model.getRiotWilliam() == 1){    //riotCrew TODO
-//            setTextNum(1);
-//        }
     }
 
     private void loadNextLevel() throws IOException {

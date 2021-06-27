@@ -2,8 +2,6 @@ package classes;
 
 import javafx.scene.text.Font;
 
-import java.awt.*;
-
 // class created to save instances and variables;
 public class Model {
     //Settings
@@ -182,18 +180,6 @@ public class Model {
 
     public String getShipName(){ return shipName;}
     public void setShipName(String nm){ this.shipName = nm;}
-
-    public void setRandomPointsFinished(boolean randomPointsFinished) {
-        this.randomPointsFinished = randomPointsFinished;
-    }
-
-    public boolean isRandomPointsFinished() {
-        return randomPointsFinished;
-    }
-
-    public void setIntroFinished(boolean introFinished) {
-        this.introFinished = introFinished;
-    }
 
     public boolean stringHasOnlyLetters(String str){
         for(int i = 0; i < str.length();i++){

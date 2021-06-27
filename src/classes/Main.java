@@ -1,11 +1,6 @@
 package classes;
-
 import classes.Chapter1.*;
-import classes.Chapter2.Ch2p1;
-import classes.Chapter3.Ch3;
-import classes.Chapter4.Ch4;
 import classes.Chapter5.Ch5;
-import classes.ShipGAME.ShipController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,11 +10,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private static int WindowWidth;
     private static int WindowHeight;
-
-    public static boolean changeScene = false;
-    public static String nickname;
-    private Parent root;
-    private Scene scene;
     private Model model;
 
     @Override
@@ -37,7 +27,26 @@ public class Main extends Application {
         chap1Controller.setCurrentScene(ch1Scene);
         chap1Controller.setStage(primaryStage);
         chap1Controller.setModel(model);
-    //Part commented below is used for testing
+
+        FXMLLoader ch5Loader = new FXMLLoader(getClass().getResource("/fxml/Ch5.fxml"));
+        Parent ch5View = ch5Loader.load();
+        Scene ch5Scene = new Scene(ch5View,WindowWidth,WindowHeight);
+
+        Ch5 chap5Controller = (Ch5) ch5Loader.getController();
+        chap5Controller.setCurrentScene(ch5Scene);
+        chap5Controller.setStage(primaryStage);
+        chap5Controller.setModel(model);
+
+        primaryStage.setScene(ch1Scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+/*
+//Part commented below is used for testing
 //        //Ch2p1
         FXMLLoader ch2p1Loader = new FXMLLoader(getClass().getResource("/fxml/Ch2p1.fxml"));
         Parent ch2p1View = ch2p1Loader.load();
@@ -88,19 +97,6 @@ public class Main extends Application {
         shipController.setCurrentScene(shipScene);
         shipController.setCurrentStage(primaryStage);
         shipController.setModel(model);
-//
-//        FXMLLoader diceLoader = new FXMLLoader(getClass().getResource("/fxml/diceFXML.fxml"));
-//        Parent diceParent = diceLoader.load();
-//        Scene diceScene = new Scene(diceParent, WindowWidth, WindowHeight);
-//
-//        DiceController diceController = diceLoader.getController();
 
-        primaryStage.setScene(ch1Scene);
-        primaryStage.show();
 
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
+ */

@@ -1,15 +1,23 @@
+
 package classes.ShipGAME;
 
+import classes.Chapter4.Ch4;
+import classes.Chapter5.Ch5;
 import classes.Model;
+import javafx.animation.TranslateTransition;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.control.Button;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +25,7 @@ public class ShipController {
     private Stage currentStage = null;
     private Scene currentScene = null;
     private Model model = null;
+    //private Model model = null;
 
     public void setCurrentStage(Stage st) {
         this.currentStage = st;
@@ -26,9 +35,12 @@ public class ShipController {
         this.currentScene = sc;
     }
 
-    public void setModel(Model mo) {
+    public void setModel(Model mo) { this.model = mo; }
+
+    /*public void setModel(Model mo) {
         this.model = mo;
-    }
+        textToShow = model.getTextCh4();
+    }*/
 
     //Two buttons for changing the direction of the ship
     @FXML
@@ -42,23 +54,23 @@ public class ShipController {
 
     //Nine circles for each wind velocity given
     @FXML
-    private Circle windStrength0 = new Circle();
+    private Polygon windStrength0 = new Polygon();
     @FXML
-    private Circle windStrength_1 = new Circle();
+    private Polygon windStrength_1 = new Polygon();
     @FXML
-    private Circle windStrength_2 = new Circle();
+    private Polygon windStrength_2 = new Polygon();
     @FXML
-    private Circle windStrength_3 = new Circle();
+    private Polygon windStrength_3 = new Polygon();
     @FXML
-    private Circle windStrength_4 = new Circle();
+    private Polygon windStrength_4 = new Polygon();
     @FXML
-    private Circle windStrength1 = new Circle();
+    private Polygon windStrength1 = new Polygon();
     @FXML
-    private Circle windStrength2 = new Circle();
+    private Polygon windStrength2 = new Polygon();
     @FXML
-    private Circle windStrength3 = new Circle();
+    private Polygon windStrength3 = new Polygon();
     @FXML
-    private Circle windStrength4 = new Circle();
+    private Polygon windStrength4 = new Polygon();
 
     //Labels and button for starting the game
     @FXML
@@ -121,7 +133,7 @@ public class ShipController {
                 System.out.println("It works " + i);
                 values.wind();
                 /*
-                Depending on the changes in SailsModel, the switch-case statement changes the visible circle.
+                Depending on the changes in ShipModel, the switch-case statement changes the visible circle.
                 According to it, the player will know what direction to take in order to avoid taking damage.
                  */
                 switch (values.windVelocity) {
@@ -179,12 +191,26 @@ public class ShipController {
                     }
                 }
             } else {
-                System.out.println("Something collapsed, we cannot handle the process anymore.");
-                timer.cancel(); //Ending timer, if the task has been run for 60 times
+                try {
+                    loadNextChapter();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
             }
             values.checkDamage();   //Recalculating damage after each repetition of the task (each second)
             System.out.println(values.damage);
             i++;
         }
     };
+
+    private void loadNextChapter() throws IOException {
+        FXMLLoader ch4Loader = new FXMLLoader(getClass().getResource("/fxml/Ch4.fxml"));
+        Parent ch4Parent = ch4Loader.load();
+        Scene ch4Scene = new Scene(ch4Parent,model.getWindowWidth(),model.getWindowHeight());
+
+        Ch4 ch4Controller = (Ch4) ch4Loader.getController();
+        ch4Controller.setCurrentScene(ch4Scene);
+        ch4Controller.setModel(model);
+        ch4Controller.setStage(currentStage);
+    }
 }

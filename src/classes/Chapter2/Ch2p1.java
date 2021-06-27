@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-// In the tavern
+// At the tavern
 public class Ch2p1 {
 
 
