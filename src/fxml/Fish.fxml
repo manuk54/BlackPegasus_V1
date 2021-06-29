@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.FishGAME.FishController">
+    <children>
+        <VBox alignment="CENTER" layoutX="2.0" layoutY="-3.0" prefHeight="406.0" prefWidth="600.0">
+            <children>
+                <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="132.0" prefWidth="579.0" text=" You stand with your fishing Rod over the Shore. During about a minute time you have to catch some fish for you and your team. Some fish are heavier than others, so you have to pull harder. If you are ready to fish" textAlignment="CENTER" textFill="#236de5" textOverrun="CLIP" wrapText="true">
+                    <font>
+                        <Font name="Bell MT Bold" size="20.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="Starter" text="Press to Start" textFill="#d71ebf">
+                    <font>
+                        <Font name="System Italic" size="19.0" />
+                    </font></Label>
+                <Button fx:id="startGame" mnemonicParsing="false" onAction="#StartGame" onMouseClicked="#StartGame" prefHeight="66.0" prefWidth="153.0" text="Start" />
+            </children></VBox>
+    </children>
+</AnchorPane>

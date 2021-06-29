@@ -74,7 +74,12 @@ public class Ch2 {
         choice1.setOnMouseClicked(mouseEvent -> {
             choice0.setVisible(false);
             choice1.setVisible(false);
-            introTextLabel.setText("You decide to return to your ship and have a good sleep before the journey you want to start the next day.");
+//            introTextLabel.setText("You decide to return to your ship and have a good sleep before the journey you want to start the next day.");
+            try {
+                loadP2Scene();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         });
     }
 

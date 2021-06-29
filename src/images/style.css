@@ -1,0 +1,4 @@
+.root {
+    -fx-background-image: url("sea.jpg");
+    -fx-background-size:cover;
+}

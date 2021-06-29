@@ -33,6 +33,12 @@ public class Ch4 {
             speechNum++;
         } else if(textNum == 0){
             speechNum = 0;
+            System.out.println("start fish");
+            try {
+                loadFish();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
             if(model.getRiotWilliam() == 1) textNum = 1;     //riotCrew TODO
             else textNum = 4;
             textLabel.setText(textToShow[textNum][speechNum]);
@@ -53,6 +59,15 @@ public class Ch4 {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void loadFish() throws IOException{
+        FXMLLoader fishLoader = new FXMLLoader(getClass().getResource("/fxml/Fish.fxml"));
+        Parent fishView =  fishLoader.load();
+        Scene fishScene = new Scene(fishView, model.getWindowWidth(), model.getWindowHeight());
+        Stage fishStage = new Stage();
+        fishStage.setScene(fishScene);
+        fishStage.show();
     }
 
     private void loadNextLevel() throws IOException {

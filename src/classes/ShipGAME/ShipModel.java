@@ -21,10 +21,12 @@ public class ShipModel {
     //randomly changing the velocity of the wind by 1
     public void wind() {
         change = (int)(Math.random()*2);
-        if ((change == 0) && (windVelocity < 4)) {
-            windVelocity++;
-        } else if ((change == 1) && (windVelocity > -4)) {
-            windVelocity--;
+        if(change==0){
+            if(windVelocity < 4) windVelocity++;
+            else windVelocity --;
+        }else{
+            if(windVelocity > -4) windVelocity --;
+            else windVelocity++;
         }
     }
 

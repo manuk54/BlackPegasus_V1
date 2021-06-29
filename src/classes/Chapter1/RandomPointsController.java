@@ -30,7 +30,7 @@ public class RandomPointsController {
     private double reloadTime = 1000; // ms time for weapon to reload
     private int score = 0;
     private int intermediateScore = 12; // points to pass half of the level (side level)
-    private int scoreToWin = 5; //How many points to pass the lvl
+    private int scoreToWin = 20; //How many points to pass the lvl
     private long lastShotTime;  //time when last shot was shoot
 
 
@@ -84,7 +84,7 @@ public class RandomPointsController {
                 updateScoreLabel();
                 clearPane();
                 motivation.setText("Good job!");
-                Label finish = new Label("Congratulations! U`ve killed "+ scoreToWin +" bastards! \n Press any button to continue");
+                Label finish = new Label("Congratulations! U`ve successfully escaped! \n Press any button to continue");
                 finish.setFont(Font.font("Bell MT",30));
                 finish.setTranslateX(model.getWindowWidth()/2 - 5*(finish.getText().length())); // positioning label in the middle
                 finish.setTranslateY(pane.getHeight()/2-finish.getHeight()/2);

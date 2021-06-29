@@ -1,6 +1,8 @@
 package classes;
 import classes.Chapter1.*;
+import classes.Chapter4.Ch4;
 import classes.Chapter5.Ch5;
+import classes.ShipGAME.ShipController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,14 +30,14 @@ public class Main extends Application {
         chap1Controller.setStage(primaryStage);
         chap1Controller.setModel(model);
 
-        FXMLLoader ch5Loader = new FXMLLoader(getClass().getResource("/fxml/Ch5.fxml"));
-        Parent ch5View = ch5Loader.load();
-        Scene ch5Scene = new Scene(ch5View,WindowWidth,WindowHeight);
+        FXMLLoader ch4Loader = new FXMLLoader(getClass().getResource("/fxml/Ch4.fxml"));
+        Parent ch4Parent = ch4Loader.load();
+        Scene ch4Scene = new Scene(ch4Parent,model.getWindowWidth(),model.getWindowHeight());
 
-        Ch5 chap5Controller = (Ch5) ch5Loader.getController();
-        chap5Controller.setCurrentScene(ch5Scene);
-        chap5Controller.setStage(primaryStage);
-        chap5Controller.setModel(model);
+        Ch4 ch4Controller = (Ch4) ch4Loader.getController();
+        ch4Controller.setCurrentScene(ch4Scene);
+        ch4Controller.setModel(model);
+        ch4Controller.setStage(primaryStage);
 
         primaryStage.setScene(ch1Scene);
         primaryStage.show();
@@ -98,5 +100,13 @@ public class Main extends Application {
         shipController.setCurrentStage(primaryStage);
         shipController.setModel(model);
 
+FXMLLoader ch5Loader = new FXMLLoader(getClass().getResource("/fxml/Ch5.fxml"));
+        Parent ch5View = ch5Loader.load();
+        Scene ch5Scene = new Scene(ch5View,WindowWidth,WindowHeight);
+
+        Ch5 chap5Controller = (Ch5) ch5Loader.getController();
+        chap5Controller.setCurrentScene(ch5Scene);
+        chap5Controller.setStage(primaryStage);
+        chap5Controller.setModel(model);
 
  */

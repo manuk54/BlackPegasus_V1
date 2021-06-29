@@ -29,10 +29,7 @@ public class Model {
             "As soon as you recover totally, your cellmate tells you what was on his mind. His plan is almost ready. He only needed a skillful captain to lead him and some more prisoners out of this hell.",
                     "In a few days you get to know everyone who takes part in the escape plan. They seem to trust you more than William, your cellmate. That might be what he was talking about.",
                     "In a few more nights, everything is ready for your escape. A riot at midnight gets the guards lost and you easily have your way to the small harbour at the fortress. The only way out is to take a ship and move away with all sails up.",
-    "As soon as you get aboard, you have to take a riffle and shoot back to protect your people from enemy fire. Spanish soldiers are shooting at you, trying to weaken you as much as they can. Kill as many as you can in order to escape." +
-            "1) If less than 10 killed: You succeed in escaping but you can't go much too far. Another ship intercepts you and you cannot escape this time (GAME OVER).\n" +
-            "2) If 10 to 19 killed: You succeed in escaping. Your crew is enough to maneuver and avoid enemy ships in the harbour or fight them back if necessary. But you will need to stop by a city to gather new sailors.\n" +
-            "3) If more than 20 killed: You escape successfully. The ship has enough supplies for a whole month in open sea. You have just enough people to stand and face any problem and take any ship you meet in the Caribbean "};
+    "As soon as you get aboard, you have to take a riffle and shoot back to protect your people from enemy fire. Spanish soldiers are shooting at you, trying to weaken you as much as they can. Kill as many as you can in order to escape."};
 
     String[] textCh2 = {"Having torn off the flag of the Spanish empire, you arrive at an English city in order to gather some new crewmen in your team. Using all of the gold you got on your ship from her previous owners, you fulfill her needs by fortifying the body and gathering more skilled sailors, who though can't be trusted yet.\n",
             "After a day full of productive work, if you can say so, you are left in the middle of a small town under the light of the moon. There is only William besides you.\n",

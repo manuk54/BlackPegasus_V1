@@ -6,132 +6,248 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.ShipGAME.ShipController">
-   <children>
-      <StackPane alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: crimson; -fx-border-width: 2; -fx-background-color: firebrick; -fx-padding: 20;">
-         <children>
-            <Label fx:id="Damage" style="-fx-font-weight: bold;" text="Damage taken:" textFill="#19d1fa">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <Button fx:id="Left" layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#turnLeft" prefHeight="40.0" prefWidth="200.0" text="Left" />
-      <Button fx:id="Right" layoutX="550.0" layoutY="350.0" mnemonicParsing="false" onAction="#turnRight" prefHeight="40" prefWidth="200" text="Right" />
-      <AnchorPane fx:id="Game" layoutX="250.0" layoutY="113.0" prefHeight="150.0" prefWidth="500.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="crimson" height="150.0" layoutX="249.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
-            <Polygon fill="DODGERBLUE" layoutX="50.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-              <points>
-                <Double fx:value="-5.0" />
-                <Double fx:value="80.0" />
-                <Double fx:value="5.0" />
-                <Double fx:value="80.0" />
-                <Double fx:value="0.0" />
-                <Double fx:value="60.0" />
-              </points>
-            </Polygon>
-             <Polygon fill="crimson" layoutX="100.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="DODGERBLUE" layoutX="150.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="crimson" layoutX="200.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="DODGERBLUE" layoutX="250.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-10.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="10.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="crimson" layoutX="300.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="DODGERBLUE" layoutX="350.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="crimson" layoutX="400.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-             <Polygon fill="DODGERBLUE" layoutX="450.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
-                 <points>
-                     <Double fx:value="-5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="5.0" />
-                     <Double fx:value="80.0" />
-                     <Double fx:value="0.0" />
-                     <Double fx:value="60.0" />
-                 </points>
-             </Polygon>
-            <Circle fx:id="windStrength0" fill="darkolivegreen" layoutX="250.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength_1" fill="darkolivegreen" layoutX="200.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength_2" fill="darkolivegreen" layoutX="150.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength_3" fill="darkolivegreen" layoutX="100.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength_4" fill="darkolivegreen" layoutX="50.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength1" fill="darkolivegreen" layoutX="300.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength2" fill="darkolivegreen" layoutX="350.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength3" fill="darkolivegreen" layoutX="400.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-             <Circle fx:id="windStrength4" fill="darkolivegreen" layoutX="450.0" layoutY="50.0" radius="7.5" stroke="BLACK" strokeType="INSIDE" />
-         </children>
-      </AnchorPane>
-      <Label fx:id="Starter" layoutX="433.0" layoutY="300.0" prefHeight="35.0" prefWidth="134.0" text="Press &quot;Start&quot;" textFill="#aa4040">
-         <font>
-            <Font name="Times New Roman Italic" size="24.0" />
-         </font>
-      </Label>
-       <Label fx:id="Explanation" layoutX="250.0" layoutY="113.0" prefHeight="150.0" prefWidth="500.0" wrapText="true">
-         <font>
-            <Font name="Times New Roman" size="18.0" />
-         </font></Label>
-      <Button fx:id="StartGame" layoutX="460.0" layoutY="350.0" mnemonicParsing="false" onAction="#startGame" prefHeight="40.0" prefWidth="80.0" text="Start" />
-   </children>
+<Pane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.ShipGAME.ShipController">
+    <children>
+        <StackPane alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" style="-fx-border-color: crimson; -fx-border-width: 2; -fx-background-color: firebrick; -fx-padding: 20;">
+            <children>
+                <Label fx:id="Damage" style="-fx-font-weight: bold;" text="Damage taken:" textFill="#19d1fa">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+            </children>
+        </StackPane>
+        <Button fx:id="Left" layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#turnLeft" prefHeight="40.0" prefWidth="200.0" text="Left" />
+        <Button fx:id="Right" layoutX="550.0" layoutY="350.0" mnemonicParsing="false" onAction="#turnRight" prefHeight="40" prefWidth="200" text="Right" />
+        <AnchorPane fx:id="Game" layoutX="250.0" layoutY="113.0" prefHeight="150.0" prefWidth="500.0">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="crimson" height="150.0" layoutX="249.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
+                <Polygon fill="DODGERBLUE" layoutX="50.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="crimson" layoutX="100.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="DODGERBLUE" layoutX="150.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="crimson" layoutX="200.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="DODGERBLUE" layoutX="250.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-10.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="10.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="crimson" layoutX="300.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="DODGERBLUE" layoutX="350.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="crimson" layoutX="400.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fill="DODGERBLUE" layoutX="450.0" layoutY="50" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="-5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="5.0" />
+                        <Double fx:value="80.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength0" fill="forestgreen" layoutX="250.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength_1" fill="blue" layoutX="200.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength_2" fill="blue" layoutX="150.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength_3" fill="red" layoutX="100.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength_4" fill="red" layoutX="50.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength1" fill="blue" layoutX="300.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength2" fill="blue" layoutX="350.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength3" fill="red" layoutX="400.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+                <Polygon fx:id="windStrength4" fill="red" layoutX="450.0" layoutY="42.5" stroke="black" strokeType="INSIDE">
+                    <points>
+                        <Double fx:value="0.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="-15.0" />
+                        <Double fx:value="15.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="7.5" />
+                    </points>
+                </Polygon>
+            </children>
+        </AnchorPane>
+        <Label fx:id="Starter" layoutX="433.0" layoutY="300.0" prefHeight="35.0" prefWidth="134.0" text="Press &quot;Start&quot;" textFill="#aa4040">
+            <font>
+                <Font name="Times New Roman Italic" size="24.0" />
+            </font>
+        </Label>
+        <Label fx:id="Explanation" alignment="CENTER" layoutX="250.0" layoutY="113.0" prefHeight="150.0" prefWidth="500.0" wrapText="true">
+            <font>
+                <Font name="Times New Roman" size="18.0" />
+            </font></Label>
+        <Button fx:id="StartGame" alignment="CENTER" layoutX="460.0" layoutY="350.0" mnemonicParsing="false" onAction="#startGame" prefHeight="40.0" prefWidth="80.0" text="Start" textAlignment="CENTER" />
+      <Button fx:id="quit" layoutX="459.0" layoutY="353.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="40.0" prefWidth="80.0" text="Quit" visible="false" />
+    </children>
 </Pane>

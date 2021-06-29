@@ -25,7 +25,7 @@ public class ShipController {
     private Stage currentStage = null;
     private Scene currentScene = null;
     private Model model = null;
-    //private Model model = null;
+    private boolean gameIsFinished = false;
 
     public void setCurrentStage(Stage st) {
         this.currentStage = st;
@@ -47,6 +47,8 @@ public class ShipController {
     private Button Left = new Button();
     @FXML
     private Button Right = new Button();
+    @FXML
+    private Button quit = new Button();
 
     //The anchor pane that is containing the elements of the game: circles and marks of the wind's velocity, the central line
     @FXML
@@ -123,6 +125,15 @@ public class ShipController {
         timer.schedule(task, 0, 1000); //Starting timer to do task every second
     }
 
+    @FXML
+    public void quitGame(ActionEvent actionEvent){
+        try {
+            loadNextChapter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     Timer timer = new Timer();
 
     TimerTask task = new TimerTask() {
@@ -130,7 +141,6 @@ public class ShipController {
         @Override
         public void run() {
             if (i <=60) {
-                System.out.println("It works " + i);
                 values.wind();
                 /*
                 Depending on the changes in ShipModel, the switch-case statement changes the visible circle.
@@ -191,14 +201,12 @@ public class ShipController {
                     }
                 }
             } else {
-                try {
-                    loadNextChapter();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+                gameIsFinished = true;
+                quit.setVisible(true);
+                task.cancel();
             }
             values.checkDamage();   //Recalculating damage after each repetition of the task (each second)
-            System.out.println(values.damage);
+            System.out.println("Damage: "+ values.damage + "   Time left: " + (60-i) + "s");
             i++;
         }
     };
@@ -212,5 +220,6 @@ public class ShipController {
         ch4Controller.setCurrentScene(ch4Scene);
         ch4Controller.setModel(model);
         ch4Controller.setStage(currentStage);
+        currentStage.setScene(ch4Scene);
     }
 }
